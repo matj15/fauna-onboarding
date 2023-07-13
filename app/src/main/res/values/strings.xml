@@ -1,3 +1,601 @@
 <resources>
     <string name="app_name">Fauna Onboarding</string>
+
+    <!-- Titles -->
+    <string name="title_create_account">Opret din bruger</string>
+    <string name="title_login">Login</string>
+    <string name="title_household_invitation">Husholdning</string>
+    <string name="title_create_household">Opret din husholdning</string>
+    <string name="title_clinic_register">Vælg din klinik</string>
+    <string name="title_clinic">Dyrelæge</string>
+    <string name="title_household">Husstand</string>
+    <string name="title_animal_overview">Mit dyr</string>
+    <string name="title_vaccination_card">Vaccination</string>
+    <string name="title_appointments">Aftaler</string>
+    <string name="title_discharge_notes">Sundhedsbog</string>
+    <string name="title_discharge_note">Konsultationssedel</string>
+    <string name="title_animal">Opret dit kæledyr</string>
+    <string name="title_animal_edit">Rediger dit kæledyr</string>
+    <string name="title_user_edit">Rediger oplysninger</string>
+    <string name="title_household_invitations">Inviter til husholdning</string>
+    <string name="title_household_edit">Rediger husholdning</string>
+    <string name="title_activity_main">Fauna</string>
+    <string name="title_conversation">Chat</string>
+    <string name="title_reset_password">Chat</string>
+    <string name="title_reset_password_email">Chat</string>
+    <string name="title_welcome">Velkommen til Fauna</string>
+    <string name="title_recommendations">Dyreklinikken anbefaler</string>
+
+    <!-- Nav bar titles -->
+    <string name="title_nav_bar_pet">Kæledyr</string>
+    <string name="title_nav_bar_vision">Fauna</string>
+    <string name="title_nav_bar_recommendations">Anbefalinger</string>
+    <string name="title_nav_bar_vaccinations">Vaccinationer</string>
+    <string name="title_nav_bar_household">Husholdning</string>
+
+    <!-- Fragment create account -->
+    <string name="fragment_create_account_text_view_fauna">Fauna</string>
+    <string name="fragment_create_account_text_input_edit_text_name">Navn</string>
+    <string name="fragment_create_account_text_input_edit_text_name_helper_text">Indtast dit for og efternavn</string>
+    <string name="fragment_create_account_text_input_edit_text_email">E-mail</string>
+    <string name="fragment_create_account_text_input_edit_text_email_helper_text">Indtast en gyldig email</string>
+    <string name="fragment_create_account_text_input_password">Adgangskode</string>
+    <string name="fragment_create_account_text_input_password_helper_text">Indtast en adgangskode på minimum 4 cifre </string>
+    <string name="fragment_create_account_button_create_user">Opret din bruger</string>
+    <string name="fragment_create_account_button_already_user">Har du allerede en bruger?</string>
+    <string name="fragment_create_account_invalid_email">Invalid e-mail</string>
+
+    <!-- Fragment login -->
+    <string name="fragment_login_text_view_enter_access_code">Sundhedsbog for kæledyrsejere</string>
+    <string name="fragment_login_text_view_sub_title">Fauna er din digitale sundhedsbog, hvor du kan have et samlet overblik over dit kæledyr. Spørg din dyrlæge, om de bruger Fauna.</string>
+    <string name="fragment_login_text_input_edit_text_email">Telefonnummer</string>
+    <string name="fragment_login_text_input_password">Adgangskode</string>
+    <string name="fragment_login_button_login">Næste</string>
+    <string name="fragment_login_invalid_input">Invalid telefonnummer eller kode</string>
+    <string name="fragment_login_text_view_no_invite_code">Har du ikke en invitationskode? <u>Lær mere her</u> </string>
+    <string name="fragment_login_dialog_fragment_text_view">For at benytte Fauna skal du kontakte din dyrlæge, som vil udlevere en kode til dig. Herefter kan du benytte det digitale vaccinationsbevis til det kæledyr</string>
+    <string name="fragment_login_dialog_fragment_button">Luk</string>
+
+    <!-- Fragment reset password email -->
+    <string name="fragment_password_reset_email_text_view_title">Glemt adgangskode</string>
+    <string name="fragment_password_reset_email_text_view_header">Indtast din kontos email adresse</string>
+    <string name="fragment_password_reset_email_text_input_layout_email">Indtast din konto email</string>
+    <string name="fragment_password_reset_email_text_input_edit_text_email">Konto email</string>
+    <string name="fragment_password_reset_button_send_email">Send glemt adgangskode email</string>
+    <string name="fragment_password_reset_email_button_back">Gå tilbage</string>
+
+    <!-- Fragment reset password -->
+    <string name="fragment_password_reset_text_view_title">Lav ny adgangskode</string>
+    <string name="fragment_password_reset_text_view_subtitle">Vi har sendt dig en email med en engangskode som du skal bruge nedenfor før du kan indtaste din nye adgangskode</string>
+    <string name="fragment_password_text_input_reset_password">Ny adgangskode</string>
+    <string name="fragment_password_text_input_layout_token">Email kode</string>
+    <string name="fragment_password_text_input_edit_text_token">Indtast email kode</string>
+    <string name="fragment_password_text_input_edit_text_reset_password">Indtast din nye adgangskode</string>
+    <string name="fragment_password_text_input_layout_password_confirm">Gentag adgangskode</string>
+    <string name="fragment_password_text_input_edit_text_reset_password_confirm">Indtast adgangskoden igen</string>
+    <string name="fragment_password_button_set_password">Gem adgangskode</string>
+    <string name="fragment_password_button_back">Gå tilbage</string>
+
+    <!-- Fragment invitation redeem -->
+    <string name="fragment_invitation_redeem_text_view_title">Fauna</string>
+    <string name="fragment_invitation_redeem_text_view_sub_title">Indtast den kode du har modtaget på enten sms eller e-mail</string>
+    <string name="fragment_invitation_redeem_text_input_layout_invitation_code">Indtast din invitations kode</string>
+    <string name="fragment_invitation_redeem_edit_text_invite_invitation_code">Invitations kode</string>
+    <string name="fragment_invitation_redeem_button_next">Videre</string>
+
+    <!-- Fragment household invitations -->
+    <string name="fragment_household_invitations_text_view_title">Inviter til Fauna</string>
+    <string name="fragment_household_invitations_text_view_sub_title">Inviter din familie ved at indtaste deres navn og telefonnummer nedenfor</string>
+    <string name="fragment_household_invitations_edit_text_invite_name">Navn</string>
+    <string name="fragment_household_invitations_edit_text_invite_phone">Telefon</string>
+    <string name="fragment_household_invitations_edit_text_invite_invitation">Hej! Du er blevet inviteret til Fauna App. Download appen her https://faunaapp.page.link/app og indtast din firecifrede invitationskode</string>
+    <string name="fragment_household_invitations_text_input_layout_email">Indtast dit familiemedlems email</string>
+    <string name="fragment_household_invitations_button_invite">Send invitation</string>
+    <string name="fragment_household_invitations_text_view_invitations_recycler_view_title">Invitationer</string>
+    <string name="fragment_household_invitations_error">Det var ikke muligt at invitere personen</string>
+    <string name="fragment_household_invitations_success">De er nu inviteret!</string>
+
+    <!-- Fragment household invitation -->
+    <string name="fragment_household_invitation_text_view_accept_invitation">Her kan du oprette din husstand. Hvis en fra din husstand allerede har oprettet sig, kan vedkommende inviterer dig på sin app.</string>
+    <string name="fragment_household_invitation_text_view_invite_method">De kan invitere dig i deres app på din email</string>
+    <string name="fragment_household_invitation_button_create_household">Opret min husholdning</string>
+    <string name="fragment_household_invitation_text_view_invitation">Du er blevet inviteret til din husholdning</string>
+    <string name="fragment_household_invitation_button_invitation_accept">Accepter invitation</string>
+    <string name="fragment_household_invitation_button_invitation_decline">Afslå invitation</string>
+
+    <!-- Fragment create household -->
+    <string name="fragment_create_household_text_view_name">Giv din husholdning et navn</string>
+    <string name="fragment_create_household_text_input_edit_text_name">Navn</string>
+    <string name="fragment_create_household_text_view_city">By</string>
+    <string name="fragment_create_household_text_input_edit_text_city">Angiv hvilken by i bor i</string>
+    <string name="fragment_create_household_text_view_postal_code">Postnummer</string>
+    <string name="fragment_create_household_text_input_edit_text_postal_code">Angiv jeres postnummer</string>
+    <string name="fragment_create_household_text_view_street">Gade</string>
+    <string name="fragment_create_household_text_input_edit_text_street">Angiv jeres gade</string>
+    <string name="fragment_create_household_button_create_household">Opret husholdning</string>
+    <string name="fragment_create_household_button_back">Gå tilbage og bliv inviteret</string>
+
+    <!-- Fragment clinic register -->
+    <string name="fragment_clinic_register_text_view_title">Vælg din klinik.</string>
+    <string name="fragment_appointments_tooltip">Her vil du kunne se dine aftaler hos dyrelægen</string>
+    <string name="fragment_text_view_discharge_note_tooltip">Her vil du kunne se din sundhedsbog</string>
+
+    <!-- Fragment vaccination card -->
+    <string name="animal_type_dog_identification_number">ID nr.</string>
+    <string name="animal_type_cat_identification_number">ID nr. / Tatov.</string>
+    <string name="animal_type_rodent_identification_number">Identifikations nummer</string>
+
+    <string name="fragment_vaccination_card_text_view_animal_age">Født</string>
+    <string name="fragment_vaccination_card_text_view_primary_contact_name">Ejer</string>
+    <string name="list_item_vaccination_card_text_view_title">Vaccinationskort</string>
+    <string name="list_item_vaccination_card_text_view_id">ID nummer</string>
+    <string name="list_item_text_view_expiration_date">Gyldig til</string>
+    <string name="list_item_text_view_batch_number">Batch nr.</string>
+    <string name="list_item_text_view_created_at">Foretaget</string>
+    <string name="list_item_text_view_expired_at">Udløb</string>
+    <string name="list_item_text_view_clinician">Dyrelæge</string>
+    <string name="vaccination_status_valid">Aktiv</string>
+    <string name="vaccination_status_expiring">Udløber snart</string>
+    <string name="vaccination_status_expired">Udløbet</string>
+    <string name="vaccination_tooltip_expiring">Vaccinen udløber inden for 1 måned. Vi anbefaler at du snart får lavet den igen</string>
+    <string name="vaccination_tooltip_expired">Vaccinen er udløbet. Du bør for den fornyet.</string>
+    <string name="vaccination_card_button_about">Om vaccine</string>
+    <string name="vaccination_card_button_see_proof">Se bevis</string>
+
+    <!-- Animal profile -->
+    <string name="animal_profile_name">Navn</string>
+    <string name="animal_profile_animal_type">Art</string>
+    <string name="animal_profile_gender">Køn</string>
+    <string name="animal_profile_race">Race</string>
+    <string name="animal_profile_date_of_birth">Født</string>
+    <string name="animal_profile_sterilized">Steriliseret</string>
+    <string name="animal_profile_sterilized_true">Ja</string>
+    <string name="animal_profile_sterilized_false">Nej</string>
+    <string name="animal_profile_identification_number">Chipnummer</string>
+    <string name="animal_profile_no_animal">Du har intet dyr</string>
+    <string name="animal_profile_no_vaccination_notes">Du har ikke modtaget nogle vaccinationskort</string>
+    <string name="animal_profile_fetching_animals">Henter dine dyr</string>
+
+    <string name="animal_profile_dog_male">Han</string>
+    <string name="animal_profile_dog_female">Tæve</string>
+
+    <string name="animal_profile_cat_male">Han</string>
+    <string name="animal_profile_cat_female">Hun</string>
+
+    <!-- Vaccination note -->
+    <string name="vaccination_note_identification_number">Chipnummer</string>
+    <string name="vaccination_notes">Vaccinationer</string>
+    <string name="vaccination_note_title">Vaccination</string>
+    <string name="vaccination_note_vaccination_type">Vaccinationstype</string>
+    <string name="vaccination_note_created_at">Foretaget</string>
+    <string name="vaccination_note_expiration_date">Gyldig til</string>
+    <string name="vaccination_note_clinician">Udstedt af</string>
+
+    <!-- Titer test card -->
+    <string name="titer_test_note_title">Titertest</string>
+    <string name="titer_test_card_type_title">Antistoffer mod</string>
+    <string name="titer_test_card_type_body">Pavovirus, hundesyge &amp; smitsom leverbetændelse</string>
+
+    <!-- Fragment clinic -->
+    <string name="list_item_opening_hours_day_monday">Mandag</string>
+    <string name="list_item_opening_hours_day_tuesday">Tirsdag</string>
+    <string name="list_item_opening_hours_day_wednesday">Onsdag</string>
+    <string name="list_item_opening_hours_day_thursday">Torsdag</string>
+    <string name="list_item_opening_hours_day_friday">Fredag</string>
+    <string name="list_item_opening_hours_day_saturday">Lørdag</string>
+    <string name="list_item_opening_hours_day_sunday">Søndag</string>
+    <string name="fragment_clinic_open_conversation">Åben chat</string>
+
+    <string name="list_item_clinic_information_header_image">Klinik</string>
+    <string name="list_item_clinic_information_working_hours">Åbningstider</string>
+
+    <!-- Fragment Animal overview -->
+    <string name="years">År</string>
+    <string name="months">Måned</string>
+    <string name="days">Dage</string>
+
+    <string name="dog">Hund</string>
+    <string name="cat">Kat</string>
+    <string name="rodent">Gnaver</string>
+
+    <string name="fragment_animal_overview_button_invite_household">Inviter</string>
+    <string name="fragment_animal_overview_text_view_medical_card">Sundhedskort</string>
+    <string name="fragment_animal_text_view_identification_number">Identifikationsnummer</string>
+    <string name="fragment_animal_text_view_insurance_number">Forsikringsnummer</string>
+    <string name="fragment_animal_text_view_sterilized">Steriliseret</string>
+    <string name="fragment_animal_text_view_clinic">Klinik</string>
+    <string name="fragment_animal_text_view_vaccination_cards">Vaccination</string>
+    <string name="fragment_animal_sterilized_yes">Ja</string>
+    <string name="fragment_animal_sterilized_no">Nej</string>
+
+    <!-- Fragment VaccinationCards -->
+    <string name="vaccine_type_bordetella_bronchiseptica">Bordetella bronchiseptica</string>
+    <string name="vaccine_type_calicivirus">Calicivirus</string>
+    <string name="vaccine_type_herpesvirus">Herpesvirus</string>
+    <string name="vaccine_type_rabies">Rabies</string>
+    <string name="vaccine_type_parvovirus">Parvovirus</string>
+    <string name="vaccine_type_distempervirus">Hundesyge</string>
+    <string name="vaccine_type_hepatitis">Hepatitis</string>
+    <string name="vaccine_type_parainfluenca">Parainfluenca</string>
+    <string name="vaccine_type_leptospirosis_2">Leptospirose 2</string>
+    <string name="vaccine_type_leptospirosis_4">Leptospirose 4</string>
+    <string name="vaccine_type_laishmaniasis">Laishmaniasis</string>
+    <string name="vaccine_type_lyme_disease">Borrelia</string>
+    <string name="vaccine_type_panleukopenia">Panleukopenivirus</string>
+    <string name="vaccine_type_chlamydia">Klamydia</string>
+    <string name="vaccine_type_leptospirosis_multi">Leptospirose muliti</string>
+    <string name="vaccine_type_leukemia">"Leukæmi"</string>
+    <string name="vaccine_type_myxomatose">Kaninpest</string>
+    <string name="vaccine_type_viral_haemorrhagic_disease_1">Kaningulsot 1</string>
+    <string name="vaccine_type_viral_haemorrhagic_disease_2">Kaningulsot 2</string>
+    <string name="filter_icon_description">Filter icon</string>
+
+    <!-- Loading VaccinationCards -->
+    <string name="vaccination_cards_loading">Henter dit dyrs vaccinationskort</string>
+    <string name="vaccination_cards_coming_soon">Kommer snart</string>
+
+    <!--  Empty VaccinationCards  -->
+    <string name="no_vaccinations_title">Der ingen digitale vaccinationskort endnu</string>
+    <string name="no_vaccinations_body">Du kan høre din dyreklinik, om de tilbyder en QR-kode for vaccinerne. Så får du et digitalt vaccinationsbevis helt automatisk, som du altid har adgang til. </string>
+    <string name="qr_code_button_label">Scan QR-kode</string>
+
+    <!-- Fragment VaccinationDetailedCards -->
+    <string name="pull_down_to_close">Træk ned for at lukke</string>
+    <string name="detailed_vaccination_card_dog_icon_description">Small dog icon</string>
+    <string name="detailed_vaccination_card_chip_leading_icon_description">Chip leading icon</string>
+    <string name="detailed_vaccination_card_chip_nr">Chip nr %1$s</string>
+    <string name="detailed_vaccination_card_birth">Født %1$s</string>
+    <string name="detailed_vaccination_card_batch_number">Batch nr.</string>
+    <string name="detailed_vaccination_card_clinician">Udstedt af</string>
+    <string name="detailed_vaccination_card_clinic">Klinik</string>
+    <string name="detailed_vaccination_card_fauna_icon_description">Fauna card logo</string>
+    <string name="detailed_vaccination_card_confirmed_by">Godkendt af</string>
+    <string name="detailed_vaccination_card_certification_logo_description">Certification logo description</string>
+
+    <!-- Fragment DischargeNotes -->
+    <string name="discharge_item_type_behaviour">Opførelse</string>
+    <string name="discharge_item_type_eye">Øjne</string>
+    <string name="discharge_item_type_ear">Øre</string>
+    <string name="discharge_item_type_mouth">Mund</string>
+    <string name="discharge_item_type_heart">Hjerte</string>
+    <string name="discharge_item_type_tail">Hale</string>
+    <string name="discharge_item_type_belly_button">Navle</string>
+    <string name="discharge_item_type_skin">Hud og hår</string>
+    <string name="discharge_item_type_genitals">Kønsorganer</string>
+    <string name="discharge_item_type_anal_glands">Analkirtler</string>
+    <string name="discharge_item_type_paw">Poter</string>
+    <string name="discharge_item_type_joint">Led</string>
+    <string name="discharge_item_type_movement">Bevægelse</string>
+    <string name="discharge_item_type_weight">Vægt</string>
+    <string name="discharge_item_type_vaccine">Vaccine</string>
+    <string name="discharge_item_type_medicine">Medicin</string>
+    <string name="discharge_item_type_follow_up">Opfølgning</string>
+
+    <string name="text_view_item_summaries">Vi har i dag gennemgået følgende</string>
+    <string name="text_view_item_descriptions">Øvrige bemærkninger</string>
+
+    <!-- Fragment household -->
+    <string name="fragment_household_image_view_header">Husholdning</string>
+    <string name="fragment_household_text_view_household_recycler_view_title">Alle medlemmer af husstanden</string>
+    <string name="fragment_household_alert_dialog_title">Vil du tilføje et dyr eller invitere en person?</string>
+
+    <!-- Fragment conversation -->
+    <string name="fragment_conversation_text_input_edit_text_message_hint">Skriv en besked til klinikken</string>
+    <string name="fragment_conversation_button_send">Send</string>
+
+    <!-- Fragment appointment -->
+    <string name="fragment_appointment_title">Aftaler</string>
+
+
+    <!-- Fragment animal -->
+    <string name="fragment_animal_text_view_animal_title">Hvilken type dyr er dit kæledyr?</string>
+    <string name="fragment_animal_button_dog">Hund</string>
+    <string name="fragment_animal_button_cat">Kat</string>
+    <string name="fragment_animal_button_rodent">Gnaver</string>
+    <string name="fragment_animal_text_field_name">Indtast kæledyrets navn</string>
+    <string name="fragment_animal_edit_text_name">Navn</string>
+    <string name="fragment_animal_text_field_date_of_birth">Indtast dyrets fødselsdag</string>
+    <string name="fragment_animal_edit_text_date_of_birth">Vælg dato ved at trykke her</string>
+    <string name="fragment_animal_text_field_identification_number">Indtast dyrests identifikationsnummer</string>
+    <string name="fragment_animal_edit_text_identification_number">Identifikationsnummer</string>
+    <string name="fragment_animal_text_field_race">Indtast dyrests race</string>
+    <string name="fragment_animal_edit_text_race">Race</string>
+    <string name="fragment_animal_switch_sterilized">Er dyret steriliseret?</string>
+    <string name="fragment_animal_text_field_color">Indtast dyrests farve</string>
+    <string name="fragment_animal_edit_text_color">Farve</string>
+    <string name="fragment_animal_text_view_gender">Vælg køn</string>
+    <string name="fragment_animal_button_male">Han</string>
+    <string name="fragment_animal_button_female">Hun</string>
+    <string name="fragment_animal_text_field_insurance_policy_number">Indtast dyrests police nummer</string>
+    <string name="fragment_animal_edit_text_insurance_policy_number">Police nummer</string>
+    <string name="fragment_animal_button_create_animal">Opret kæledyr</string>
+    <string name="fragment_animal_button_create_animal_save">Gem kæledyr</string>
+
+    <!-- Fragment User edit -->
+    <string name="fragment_user_edit_title">Rediger dine oplysninger</string>
+    <string name="fragment_user_edit_text_name">Navn</string>
+    <string name="fragment_user_edit_text_field_name">Indtast dit navn</string>
+    <string name="fragment_user_edit_text_phone_number">Telefonnummer</string>
+    <string name="fragment_user_edit_text_field_phone_number">Indtast dit telefonnummer</string>
+    <string name="fragment_user_edit_button_save">Gem oplysninger</string>
+
+    <!-- Fragment household edit -->
+    <string name="fragment_household_text_input_layout_name">Ændrer din husholdnings navn</string>
+    <string name="fragment_household_text_input_edit_text_name">Navn</string>
+    <string name="fragment_household_text_input_layout_street">Ændrer jeres gade</string>
+    <string name="fragment_household_text_input_edit_text_street">Gade</string>
+    <string name="fragment_household_text_input_layout_postal_code">Ændrer jeres postnummer</string>
+    <string name="fragment_household_text_input_edit_text_postal_code">Postnummer</string>
+    <string name="fragment_household_text_input_layout_city">Ændrer hvilken by i bor i</string>
+    <string name="fragment_household_text_input_edit_text_city">By</string>
+
+    <string name="household_nav_menu_logout">Log ud</string>
+    <string name="dialog_fragment_update_app_title">Vi har lavet en opdatering til Fauna. Du kan få den nyeste app på play store.</string>
+    <string name="dialog_fragment_update_app_go_to_play_store">Gå til play store</string>
+
+    <!-- OnBoarding -->
+    <string name="on_board_title_4">Faunas vision</string>
+    <string name="on_board_body_4">Vi ønsker at digitalisere din fysiske sundhedsbog, og samle det hele i en app. Hjælp Fauna med at gøre veterinærindustrien grønnere, og gøre livet nemmere for kæledyrsejere.</string>
+    <string name="fauna_logo_solid_green">Fauna logo solid green</string>
+    <string name="registration_or_login_title">Kæledyrets digitale sundhedsbog</string>
+
+    <string name="on_board_new_user_info_top_appbar_title">Info om dig</string>
+    <string name="register_new_user_button_title">Opret bruger</string>
+    <string name="login_button_title">Log ind</string>
+    <string name="on_board_title_1">Digitale vaccinebeviser i lommen</string>
+    <string name="on_board_body_1">Få digitale beviser for dit kæledyrs aktive vaccinationer. Så kan du nemt holde styr på dem og blive påmindet, når de nærmer sig udløbsdato.</string>
+    <string name="on_board_title_2">Slip for fysisk dokumenter</string>
+    <string name="on_board_body_2">Saml alle dit kæledyrs sundhedsdokumenter, så du altid har overblik over deres oplysninger og indsigt i sygdomshistorikken. Du er med til at gøre veterinærindustrien grønnere, og livet nemmere for dig.</string>
+    <string name="on_board_title_3">Giv overblik til hele husstanden</string>
+    <string name="on_board_body_3">Ved at samle alle informationer omkring kæledyret digitalt, kan du nemt dele det med din husstand. Så kan alle tage jeres kæledyr til dyrlægen.</string>
+    <string name="on_board_new_user_info_title">Info om dig</string>
+    <string name="on_board_new_user_info_body_text">Først har vi brug for lidt info om dig.</string>
+    <string name="on_board_new_user_continue_button">Fortsæt</string>
+
+    <string name="on_board_otp_code_top_appbar_title">Bekræft mobilnummer</string>
+    <string name="on_board_otp_code_title">Bekræft dit nummer</string>
+    <string name="on_board_otp_code_body_text">Vi har sendt en kode til dit mobilnummer. Det kan tage et par sekunder, før du modtager den.</string>
+
+    <string name="on_board_new_animal_info_top_appbar_title">Info om kæledyr</string>
+    <string name="on_board_new_animal_type_title">Vælg dit kæledyr</string>
+    <string name="on_board_new_animal_type_body_text">Vælg det kæledyr, du ønsker at oprette.</string>
+    <string name="on_board_new_user_top_title_4">Info om kæledyr</string>
+    <string name="on_board_new_animal_info_title">Info om dit kæledyr</string>
+    <string name="on_board_new_animal_info_body_text">Indtast info om din hund. Hvis du ikke har chipnummeret, kan det tilføjes senere.</string>
+    <string name="on_board_new_user_continue_button_right_arrow_icon_description">Right arrow button icon</string>
+    <string name="on_board_new_user_close_icon_description">Top App bar close icon</string>
+
+    <string name="on_board_next">Næste</string>
+    <string name="on_board_image">Onboarding image</string>
+    <string name="on_board_get_started">Kom i gang</string>
+    <string name="on_board_explore">Udforsk appen</string>
+    <string name="on_board_welcome">Velkommen til Fauna!</string>
+
+    <string name="on_board_new_user_accept">Jeg godkender</string>
+    <string name="on_board_new_user_privacy_policy">privatlivspolitikken</string>
+    <string name="on_board_new_user_privacy_policy_website">https://www.faunaapp.dk/om-fauna/privatlivs-og-cookiepolitik/</string>
+
+    <string name="on_board_welcome_title">Velkommen til Fauna!</string>
+    <string name="on_board_welcome_body">Du er nu oprettet som bruger og har tilføjet dit kæledyr, Alfred. Så kan du oprette vaccinebeviser og samle alle Alfreds dokumenter digitalt.</string>
+    <string name="on_board_welcome_button_title">Jeg er klar</string>
+
+    <!-- AnimalCreate -->
+    <string name="animal_create_name">Navn</string>
+
+    <!-- UserCreate -->
+    <string name="user_create_name">Navn</string>
+    <string name="user_create_email">E-mail</string>
+    <string name="user_create_phone_number">Mobilnummer</string>
+
+    <!-- Content -->
+    <string name="content_author_veterinarian">Dyrelæge</string>
+    <string name="content_author_nurse">Veterinær sygeplejeske</string>
+
+    <string name="content_title_0">Forstørrede prostata hos hunde</string>
+    <string name="content_author_name_0">Jacob Larsen</string>
+    <string name="content_teaser_0">Fra 4-årsalderen ses forstørrelse hos hanhunde i 50% tilfælde</string>
+    <string name="content_body_0">Forstørrelse af prostata (Hypertrofi) hos hanhunde er almindeligt forekommende. Allerede i 4-årsalderen kan problemet opstå og være forekommende hos mere end 50% af hanhundene. I 8-årsalderen er det tal steget til 90%.\n\nProstata er en kirtel, der ligger i bækkenet over urinrøret. Når den forstørres, kan det påvirke urinafgang og trykke tarmen med forstoppelse til følge.\n\nDerfor kan hundene have smerter og have gigtlignende symptomer.\n\nDet kan være en god ide at få tjekket din hanhund ved dyrlægen, hvis du er i tvivl. Diagnosen kan stilles på tre måder:\n\nMetode 1: Rektal undersøgelse af kirtlen for at vurdere størrelsen.\n\nMetode 2: Blodprøve (CPSE, canine Prostate Specific Ecterase) kan være et mål for en proteinmængde i blodet, der ses ved denne tilstand.\n\nMetode 3: Ultralydsscanning (og røntgen) for at vurdere kirtlens størrelse og vurdere vævsstrukturen.\n\nStilles diagnosen er det vigtigt at huske, at tilstanden i langt de fleste tilfælde er godartede.</string>
+
+    <string name="content_title_1">Disse hunderacer kan få øjenirritation</string>
+    <string name="content_author_name_jan_birch">Jan Birch</string>
+    <string name="content_teaser_1">Hvad kan øjenirritation skyldes, og hvilke racer rammer det?</string>
+    <string name="content_body_1">Nogle hunde har tilbagevendende øjenbetændelse eller øjenirritation.\n\nÅrsagen kan være et tørt øje, hvor tåreproduktionen er nedsat, hvilket giver klistret tåresekret og evt. uklart udseende af hornhinden.\n\nEn anden årsag kan være et hornhindesår, hvor hunden tydeligvis er generet af tilstanden og kan knibe øjet sammen.\n\nNogle hunderacer er prædisponerede, og du skal derfor være ekstra opmærksom, hvis du ejer en af følgende: \n\n	Cavalier King Charles Spaniels\n	Engelsk Bulldog\n	Lhaso Apso\n	Shitzu\n	West Highland White Terriers\n	Engelske og Amerikanske Cocker\n	Pekingeser\n	Boston terrier\n	Miniature Schnauser\n	Franske Bulldogs\n	Blandingsracer heraf\n\nDiagnosen ”et tørt øje” (KCS, keratoconjunctivitis Sicca) testes ved en såkaldt Schirmer test, hvor øjets tåreproduktion måles.\n\nHornhindesår testes ved, at øjet dryppes med et farvestof, der kan afklare, om der er en rift eller fordybning i hornhinden.\n\nUndersøgelsen er heldigvis helt smertefri for hundene, og der findes en række nye produkter til behandling af disse tilstande.</string>
+
+    <string name="content_title_2">10 gode råd, inden du køber hund</string>
+    <string name="content_author_name_vibeke">Vibeke Steinmüller</string>
+    <string name="content_teaser_2">Læs her, hvad du kan være opmærksom på ude hos opdrætteren</string>
+    <string name="content_body_2">Har du besluttet dig for at købe hund er det essentielt at kigge på hvalpens otte første uger ude hos opdrætteren. Der sker nemlig en meget vigtig prægning af hvalpen i denne tid, og derfor får du her 10 gode råd til, hvad du kan være opmærksom på.\n\nRåd 1:\nInden du beslutter dig for en hvalp (eller en opdrætter), så er det altid en god ide at møde tæven. I mødet kan du fornemme hendes temperament, som smitter af på hvalpene, og derfor er det vigtigt at kigge efter sunde forældrekæledyr.\n\nRåd 2:\nUndersøg om hvalpene er opvokset i et hus med forskellige lyde fra dagligdagen. Det kunne være telefoner, ringeklokke, vaskemaskine, støvsuger osv. Hvalpene skal nemlig drage erfaringer med lyde fra den verden, der kommer til at omgive dem i fremtiden.\n\nRåd 3:\nSpørg ind til, om hvalpene er blevet motorisk stimulerede. Det kunne være at kravle, klatre, tunnel lege, gå på vippebræt osv.\n\nRåd 4:\nSpørg ind til, om hvalpen har været udendørs, da dette ellers kan være en stor omvæltning, hvis den udelukkende har været holdt indenfor.\n\nRåd 5:\nEr hvalpen vant til at køre bil? Dette kan være vigtigt, såfremt din hverdag er præget af meget bilkørsel.\n\nRåd 6:\nHar hvalpen prøvet at have halsbånd eller snor på sig? Hvalpen skal vænne sig til snor og halsbånd, og det kan være en hjælp, hvis din opdrætter er startet tidligt med dette.\n\nRåd 7:\nSpørg om hvalpen er håndtam. Det er en vigtig del af hvalpens socialisering at møde mange forskellige mennesker; store, små, børn og ældre.\n\nRåd 8:\nVirker hvalpen sund og rask?\n\nRåd 9:\nVær sikker på, at hvalpen har været en tur forbi dyrlægen og fået ormebehandling, chipmærke, og at den er vaccineret.\n\nRåd 10:\nUndersøg, om der er sygdomsforekomster eller arvelige fejl.\n\nHeld og lykke med din nye hvalp.</string>
+
+    <string name="content_title_3">Mere end 90% af hunde over 5 år har begyndende gigt</string>
+    <string name="content_teaser_3">Stivhed og smerte rammer ofte ældre hunde, og det kan være et tegn på gigt. Læs de syv tegn, hvad du skal være opmærksom på for at opdage det tidligt i din hund.</string>
+    <string name="content_body_3">Slidgigt, der også kaldes osteoarthritis eller degenerativ ledsygdom, er den mest almindelige årsag til kroniske smerter og nedsat mobilitet hos hunde. Gigt, som er en aldersbetinget tilstand kan starte i 5-6 års alderen hos større hunderacer og senere hos de mindre hunderacer. Her er 7 tegn på klassiske symptomer på gigt:\n\n1. Generelt ømhed, som kan ses på din hund ved f.eks. en let halten efter hvile.\n\n2. Din hund viser mindre lyst til at gå ture.\n\n3. Adfærdsændringer i hunden\n\n4. Nedsat appetit\n\n5. Din hund er ‘stivbenet’\n\n6. Tøver lidt ved at gå op og ned ad trapper eller at hoppe ind i bilen\n\n7. En ændring i hundens behov for kontakt med mennesker - kan også udvise aggressivitet overfor mennesker\n\nHvis du kan genkende et eller flere af disse symptomer, kan din hund muligvis lide af slidgigt. Kontakt din dyrlæge, som kan diagnoser gigten i din hund ved en røntgenundersøgelse. Afhjælpning efter diagnosen er stillet kan være massage, gigtmiddel, kosttilskud, motionsplan og en kost plan.</string>
+
+    <string name="content_title_4">Hvad er din hund blevet vaccineret mod?</string>
+    <string name="content_teaser_4">Læs om de seks mest gængse sydomme man vaccinere hunde mod</string>
+    <string name="content_body_4">Vacciner beskytter mod alvorlige sygdomme. Hunde, som er vaccineret, vil derfor ikke i samme grad kunne blive smittet. Der kan i sjældne tilfælde alligevel opstå sygdom hos vaccinerede hunde. Hvis en hund alligevel rammes af sygdom, vil det ofte kun indebære svage symptomer og sjældent noget alvorligt.\n\nLæs herunder de mest gængse sygdomme hunde bliver vaccineret mod:\n\n1. Rabies, også kaldet hundegalskab, skyldes et virus som kan ramme alle pattedyr, inklusiv mennesker. Virusset smitter kun via bid eller spyt og angriber centralnervesystemet. Dette medfølger lammelse, som gør sygdommen dødelig.\n\n2. Hepatitis er en leverbetændelse, som især rammer unghunde. Sygdommen skyldes et virus som smitter gennem hundes ekskrementer eller fra hund til hund. Hos smittede hunde ses nedstemthed, opkast, blod fra slimhinder, nedsat appetit, feber og gulsot.\n\n3. Hundesyge er en sygdom, der skyldes et virus. Sygdommen rammer særligt hvalpe og unghunde. Smittes en hund med hundesyge, smitter den ved kontakt med en anden hund. Symptomer på sygdommen er feber, hoste, nedsat appetit, diarré og opkast.\n\n4. Parvovirusdiarré, både hunde og katte kan blive ramt af dette virus. Sygdommen ses ofte hos hvalpe og unghunde. Dit kæledyr skal hurtigst muligt under behandling, hvis de er blevet smittet med sygdommen. Hos smittede hunde eller katte ses nedtrykthed, blodigt diarré og opkast.\n\n5. Leptospirose forsages af en bakterie, som findes i urin fra gnavere såsom rotter og mus. Hunde som færdes i skove, stalde på landet eller bader i søer og andre vådområder, er i risikogruppen for denne sygdom. Derudover er jagthunde også i risiko for at blive smittet, da de kan være i kontakt med urinforurenet jordbund.\n\n6. Kennelhoste er en betegnelse for forskellige infektioner i hundens luftveje. Infektioner eller betændelsestilstande gør hundens hals og svælg rødt og hævet. Disse infektioner kan blandt andet skyldes parainfluenzavirus eller bordetella bronchiseptica bakterier.</string>
+
+    <string name="content_title_5">Har du en overvægtig hund?</string>
+    <string name="content_teaser_5">Overvægt hos hunde øger risikoen for følgesygdomme. Læs mere om overvægt hos hunde her.</string>
+    <string name="content_body_5">Omtrent 40 % af de danske hunde er overvægtige, og tendensen er desværre stigende. Overvægt defineres som et overskud af kropsfedt. Dette overskud opstår som en kombination af øget energiindtag og nedsat energiforbrug - ingen motion. Det er ikke unormalt, at hunde lider af overvægt, men det kan have stor negativ betydning for deres velvære. Derudover kan det være risikofyldt at bedøve en overvægtig hund, og det er derfor vigtigt at være opmærksom på hundens størrelse. Overvægt hos hunde kan nedbringe hundens levetid og samtidig forringe livskvaliteten, da det både slider på knogler, muskler og organer.\n\nHundeejere bærer en stor del af skylden for overvægt hos hunde. Vores mad er ikke egnet som hundefoder, og bidrager voldsomt til hundes overvægt. Man gør derved hunden en bjørnetjeneste, hvis man ikke ignorerer tiggeri ved bordet. Overvægt medfører mange følgesygdomme hos hunde. Herunder har vi samlet en liste over de mest almindelige følgesygdomme og fakta om overvægtige hunde:\n\n- Overbelastning af led/gigtproblemer\n- Sukkersyge\n- Hudproblemer\n- Hjertesygdomme\n- Varmeintolerance\n- Steriliserede og kastrerede hunde har større tendens til overvægt end intakte hunde\n- Visse racer har mere tendens til overvægt end andre, et eksempel på dette er hunde af retrieverrace\n\nFørste skridt er altid at få vejet sin hund hos dyrlægen og derefter udarbejdet en kostplan i fællesskab. Hvis du er usikker, kan du starte med at føle på hundens ribben, og hvis du kun svagt kan føle dem, anbefaler vi, at du kontakter din dyrlæge.</string>
+
+    <string name="content_author_camilla">Camilla Bendix</string>
+
+    <string name="content_title_6">Min hund/kat taber sig ikke på trods af den spiser mindre mad</string>
+    <string name="content_teaser_6">10 gode råd til et godt og solidt vægttab</string>
+    <string name="content_body_6">1. Ligesom ved mennesker, vil et godt vægttab for dit kæledyr kræve, at du ændrer på hundens/kattens normale vaner.\n\n2. Husk på, hvis man er flere personer i husstanden, er der også flere, der kan give godbidder.\n\n3. En lille skive ost for dit kæledyr er tilsvarende vi mennesker spiser en hel burger - skiven indeholder ligeså mange kalorier.\n\n4. Der findes mange forskellige lightprodukter til vægtreducering af din hund/kat- Her skal du være opmærksom på, at rigtig mange af de produkter, ikke er godkendt til slankekur. Man kan ikke sætte hunden på et light foder og reducere mængden, da det medfører ukorrekt næringsstof tildeling.\n\n5. Et godkendt slankefoder indeholder mange gode fibre, som er med til at give en god mæthedsfølelse i længere tid.\n\n6. Flere mindre måltider i løbet af dagen hjælper med at bevare mæthedsfølelsen i længere tid.\n\n7. Det er en god ide at gå anderledes terræn på gåture, så flere kalorier forbrændes.\n\n8. Katten kan også motiveres til mere motion, i form af forhindringsbaner eller klatrestativer, hvor de kan søge efter mad. Forskellige jagtlege kan også motivere øget bevægelse.\n\n9. Hunden/katten tåler og fordøjer grønsager rigtig godt, så dette er et rigtig godt supplement til det daglige energiindtag ved vægttab.\n\n10. Til de hurtigspisende dyr, kan en slow-feeder madskål være en god ide. Det giver hunden/katten en bedre mulighed for at føle større mæthed.\n\nHvis du generelt er i tvivl om, hvilke produkter, der er det rette for dit kæledyr, skal du kontakte en ernæringsvejleder i hunde/kattefoder.</string>
+
+    <string name="content_author_klara">Klara N. Trads</string>
+
+    <string name="content_title_8">Fra mælketænder til permanent tandsæt</string>
+    <string name="content_teaser_8">Hvad du som hunde/katteejer skal være obs på ved tandskifte</string>
+    <string name="content_body_8">De fleste hunde og katte skifter fra mælketænder til permanente tænder fuldstændig uproblematisk, det er dog en rigtig god idé at løbende kigge sin firbenede ven i mundhulen for at sikre sig at det nu også er tilfældet.\n\nHundehvalpe og kattekillinger får deres mælketænder indenfor de første leveuger. Ved 4 måneders alderen begynder det normale tandskifte. Ligesom hos mennesker starter tandskiftet med fortænderne, derefter skiftes hjørnetænderne og kindtænderne. Tandskiftet skal gerne være et overstået kapitel ved 6 måneders alderen, ellers skal du som kæledyrsejer reagere.\n\nI nogen tilfælde sker det at hvalpen eller killingen ender ud med tilbageholdte mælketænder - det vil sige, den ikke taber en eller flere mælketænder. Det ses oftest ved hjørnetænder, hvor den permanente tand typisk vokser frem på indersiden eller foran mælketanden. Mælketænder længere inde i mundhulen kan også være tilbageholdte, i dette tilfælde er der nogen gange tale om en manglende permanent tand, eller et skævt eller manglende frembrud af den permanente tand som er årsagen. Tilbageholdte mælketænder skal typisk fjernes ved dyrlægen i bedøvelse, da det ellers kan give et forkert bid, samt for snævert mellemrum mellem tænder, som giver grobund for tandsten og bakterier.\n\nMælketænder er generelt noget skrøbelige, sammenlignet med de permanente tænder og kan nemmere knække. Frakturerede mælketænder skal fjernes ved dyrlægen, da det er smertefuldt for dyret at gå med. Mælketænder har desuden en meget bred/åben pulpa (nerven, som er det bløde væv der findes i midten af tanden), så hvis der er tale om en knækket mælketand hvor pulpaen er blottet er der risikoen for infektion ned i kæbeknoglen.\n\nTil sidst skal man være observant på hvordan de permanente tænder vokser op og at hvalpen/killingen ender op med et korrekt bid. Det vigtigste her er at dyret kan bide sammen uproblematisk, kan tygge sin mad og ikke rammer sig selv i tandkødet eller i ganen når den bider sammen.\n\nHvis du er i tvivl, så få en tid ved din dyrlæge til tandtjek.</string>
+
+    <string name="content_title_7">Øreproblemer hos hunde </string>
+    <string name="content_teaser_7">Har din hund øreproblemer?</string>
+    <string name="content_body_7">"Øreproblemer er noget vi ser meget ofte i klinikken, specielt ved hundene. Op mod 20% af alle hunde får øreproblemer på et tidspunkt af deres liv. Det kan være meget irriterende og smertefuldt for hunden." Fortæller dyrlæge Pernille Brandt Horsman.\n\nDet er en rigtig god ide at tjekke din hunds øre jævnligt. Samt vænne den til at få undersøgt sine øre, da det kan give en bedre oplevelse ved dyrlægen. Når du tjekker din hunds øre, skal du holde øje med disse tegn:\n\nKløe\nRyster på hovedet\nØget mængde ørevoks\nDårlig/sur lugt\nRødme\nHævelse\n\nHvis du oplever en eller flere af ovenstående, kan det være tegn på øregangsbetændelse. Vi anbefaler derfor, at det bliver tjekket ved dyrlægen, hvor der kigges ned i øret og tages en prøve til mikroskopisk undersøgelse. Derfra kan der vurderes en behandling og hjælpe med hvordan, man kan forebygge problematikken. Øregangsbetændelse kan skyldes flere årsager:\n\n- Den hyppigste årsag er et hudproblem som bla. kan skyldes allergi.\n\n- Ørets fysiologiske udformning - f.eks. snævre øregange, hænge øre eller mange ørehår, som ofte er racespecifikt.\n\n- Parasitter, f.eks. øremider.\n\n- Fremmedlegme i øregangen, herunder ofte græsavner.</string>
+
+    <string name="content_title_fauna">Fauna</string>
+    <string name="content_header_title_fauna">Vil du være med til at gøre livet bedre for vores kæledyr?</string>
+    <string name="content_body_fauna">Faunas Koncept\n\nFauna er den eneste platform, en kæledyrsejer nogensinde har brug for. Det er intentionen bag vores koncept: Vi vil være veterinærindustriens officielle digitale sundhedsbog. Fauna app skal være bindeleddet mellem dyreejere og aktører i veterinærbranchen, hvor vi vil skabe god kommunikation, tryghed og gennemsigtighed.\n\nFaunas koncept er forankret i dyrlæge Jan Birch mange års erfaring med egen dyreklinik i Odder. Gennem 36 år i veterinærindustrien som praktiserende dyrlæge og tidligere formand for de danske dyrlæger så Jan en række problematikker. Det var især kommunikationen mellem klinikker, kæledyrsejere og andre interessenter i branchen, som var problematisk. En sundhedsbog på PAPIR – behøver vi sige mere? Denne problematik er ofte en direkte konsekvent af forældede processer i klinikkernes egne arbejdsgange, som ikke har fulgt den teknologiske udviklingen. Med denne udvikling kommer også et ønske og forventninger om hurtigere og nemmere kommunikation fra kæledyrsejernes side. Jans dyreklinik stod ikke alene med disse kommunikations- og dokumentationsudfordringer, og hans ønske om at modernisere egen klinik blev startskuddet til det koncept, Fauna arbejder på i dag.\n\nGennem en familierelation til Jan blev holdet bag Fauna samlet, baseret på en bred vifte af kompetencer og en brændende motivation for iværksætteri og for at gøre en forskel for kæledyrsejere.\n\nHvorfor?\n\nHos Fauna er kæledyret i centrum. Vi vil gerne sikre, at vores kæledyr har det godt og er sunde og raske. Den bedste måde at sikre det på, er ved at give dig de bedste forudsætninger for at være en god kæledyrsejer. Det tror vi på i Fauna. Samtidig har vi et ønske om at opdatere et forældet system – gøre det papirløst og grønt, hurtigt og nemt.\n\nHvordan?\n\nFauna har gennem de sidste par år brugt meget tid sammen med både dyreklinikker, opdrættere, medicinalvirksomheder, interesseorganisationer og ikke mindst kæledyrsejere. Vi prioriterer særligt kæledyrsejernes behov og ønsker, og tager højde for de nye forventninger digitaliseringen har medført.\nDerfor samler vi alt, du skal bruge og vide omkring dit kæledyr, i en app, der gør det nemmere og mere overskueligt at holde styr på alt det praktiske omkring dit kæledyr.\n\nHvad?\n\nFauna er en app, der samler alt sundhedsrelateret ét sted. Vores app vil erstatte de fysiske dokumenter med en digital løsning, som giver dig overblik, påmindelser og sikre, at alt det, du skal bruge, kun er få klik væk. Vi udvikler hele tiden nye ting til appen, men det første skridt er et nyt digitalt vaccinationskort. Ydermere tilbyder appen en oversigt over dit kæledyrs basale informationer og nye anbefalinger fra fagpersoner hver uge.\n\nVi håber, du får stor glæde af appen.</string>
+
+    <!-- AnimalCreate -->
+    <string name="animal_create_title">Opret dit kæledyr</string>
+    <string name="animal_create_type_dog">Hund</string>
+    <string name="animal_create_type_cat">Kat</string>
+    <string name="animal_create_identification_number">Indtast chipnummer</string>
+    <string name="animal_create_identification_number_confirm">Indtast chipnummer igen</string>
+    <string name="animal_create_button">Opret kæledyr</string>
+    <string name="animal_created_title">Dit kæledyr er oprettet</string>
+    <string name="animal_created_error">Vi kunne ikke oprette dit kæledyr</string>
+
+    <!-- Welcome -->
+    <string name="welcome_footer_navigation_button">Hjem</string>
+    <string name="welcome_title">Velkommen til Fauna</string>
+    <string name="welcome_message">For at benytte Fauna, beder vi dig oprette dig som bruger nedenfor</string>
+    <string name="welcome_button_login">Opret Fauna sundhedsbog</string>
+    <string name="welcome_button_feedback">Feedback</string>
+
+    <string name="welcome_card_title">Dyreklinikken anbefaler</string>
+    <string name="welcome_card_body">Læs mere om hvad dyreklinikken anbefaler, hvor eksperter kommer med gode råd.</string>
+    <string name="welcome_card_button_text">Læs mere her</string>
+
+    <!-- Content front page  -->
+    <string name="content_front_page_title">Dyreklinikken anbefaler</string>
+
+    <string name="content_front_page_card_title">Hjælp fauna med vores vision</string>
+    <string name="content_front_page_card_body">Her kan du læse mere om vores vision for appen, og hvordan vi bedst muligt kan hjælpe vores kæledyr.</string>
+    <string name="content_front_page_card_button_text">Læs mere her</string>
+
+    <!-- Vision -->
+    <string name="vision_title">Fauna</string>
+
+    <!-- Barcode -->
+    <string name="barcode_title">Qr kode</string>
+    <string name="barcode_clinician_scan_error_title">Vi kunne ikke finde dyrlægen</string>
+    <string name="barcode_vaccine_type_scan_error_title">Vi kunne ikke finde vaccinen</string>
+
+    <string name="barcode_loading">Indlæser</string>
+    <string name="barcode_clinician_scan_title">Scan en dyrlæge</string>
+    <string name="barcode_vaccine_type_scan_title">Scan en vaccine</string>
+
+    <string name="barcode_clinician_title">Du har scannet dyrlæge</string>
+    <string name="barcode_vaccine_type_title">Du har modtaget en ny vaccine</string>
+
+    <!-- Barcode explainer -->
+    <string name="barcode_explainer_title">Fauna vaccinationskort</string>
+    <string name="barcode_explainer_text">Du har nu muliged for at modtage digitale vaccinationskort fra din dyrlæge ved selv at scanne kortene.\n\nSpørg efter Fauna vaccinations kortet næste gang du besøger din dyrlæge.</string>
+    <string name="barcode_explainer_button_scan">Scan</string>
+
+    <!-- Phone number -->
+    <string name="phone_number_title">Få tilsendt en adgangskode</string>
+    <string name="phone_number_body">Indtast dit telefonnummer</string>
+    <string name="phone_number_phone_number_hint">Telefonnummer</string>
+    <string name="phone_number_button">Få tilsendt kode på SMS</string>
+
+    <!-- Login -->
+    <string name="access_code_title">Indtast sms kode</string>
+    <string name="access_code_body">Vi har sendt dig en engangs kode på sms. Indtast den nedenfor for at logge ind.</string>
+    <string name="access_code_hint">Indtast sms kode</string>
+    <string name="access_code_button">Log in</string>
+
+    <!-- AnimalEdit -->
+    <string name="animal_edit_title">Stamdata</string>
+    <string name="animal_edit_body">Ret eller indtast manglende information om dit kæledyr.</string>
+    <string name="animal_edit_name_hint">Indtast navn</string>
+    <string name="animal_edit_race_hint">Indtast race</string>
+    <string name="animal_edit_date_of_birth_hint">Vælg fødselsdag</string>
+    <string name="animal_edit_sterilized_hint">Er dyret steriliseret?</string>
+    <string name="animal_edit_gender_hint">Vælg køn</string>
+    <string name="animal_edit_gender_male">Han</string>
+    <string name="animal_edit_gender_female">Hun</string>
+    <string name="animal_edit_button">Gem</string>
+
+    <!-- Camera -->
+    <string name="camera_permission_title">Brug af kamera</string>
+    <string name="camera_permission_body">Vi skal bruge adgang til dit kamera for at kunne scanne qr koden</string>
+    <string name="camera_permission_settings">Åben indstillinger</string>
+    <string name="camera_permission_ok">Ok</string>
+
+    <!-- error -->
+    <string name="error_generic">Der er sket en fejl. Kontakt Fauna for at få hjælp.</string>
+    <string name="error_generic_title">Der er sket en fejl</string>
+    <string name="error_generic_try_again_button">Prøv igen</string>
+
+
+    <!-- Household -->
+    <string name="household_title">Husholdning</string>
+    <string name="household_loading">Henter din husholdning</string>
+    <string name="household_invite_member_button_label">Inviter</string>
+    <string name="household_members_label">Medlemmer</string>
+
+    <!-- AssistChip component -->
+    <string name="chip_trailing_icon_description">Chip dropdown icon</string>
+    <string name="vaccination_title">Vaccination</string>
+    <string name="medicine_title">Medicin</string>
+    <string name="testanswer_title">Prævesvar</string>
+    <string name="chip_text_example">Text</string>
+
+    <!-- ChipNumberCard component -->
+    <string name="chip_card_title">Chipnummer</string>
+
+    <!-- Button component -->
+    <string name="add_button_icon_description">Add icon</string>
+    <string name="qr_button_icon_description">QR scan icon</string>
+    <string name="button_enabled">Enabled</string>
+    <string name="button_disabled">Disabled</string>
+    <string name="button_pressed">Pressed</string>
+    <string name="button_ok">OK</string>
+
+    <!-- IconButton component -->
+    <string name="icon_button_icon_description">Fauna Icon button</string>
+
+    <!-- FileUpload component -->
+    <string name="file_upload_button_title">Upload file</string>
+    <string name="file_upload_image_preview_icon_description">Image preview icon</string>
+    <string name="file_upload_delete_icon_description">Delete icon</string>
+    <string name="file_upload_image_file_name">Filnavn.pdf</string>
+    <string name="file_upload_image_file_data">Foto – 4,5 MB - 9. sep. 2022</string>
+
+    <!-- Filter component-->
+    <string name="filter_results">Filtrer resultater</string>
+    <string name="filter_title">Filtrer</string>
+    <string name="filter_close_icon_description">Close icon</string>
+    <string name="filter_down_arrow_icon_description">Down arrow icon</string>
+    <string name="type_title">Type</string>
+
+    <!-- InputField component-->
+    <string name="type_label">Type</string>
+    <string name="date_label">Dato</string>
+    <string name="calender_icon_description">Calender icon</string>
+
+    <!-- Snackbar component-->
+    <string name="warning_icon_description">Snackbar warning icon</string>
+    <string name="info_icon_description">Snackbar info icon</string>
+    <string name="success_icon_description">Snackbar success icon</string>
+    <string name="snackbar_header_text">Snackbar header text</string>
+    <string name="snackbar_body_text">Fusce dapibus, tellus ac cursus commodo, tortor mauris
+        condimentum nibh</string>
+
+    <!-- TimelineCard component -->
+    <string name="chipnumber_title">Chipnummer</string>
+    <string name="pill_icon_description">Pill icon</string>
+    <string name="chipnumber_example">14566 5633</string>
+
+    <!-- Tooltip component -->
+    <string name="tooltip_title_example">Læs mere</string>
+    <string name="tooltip_body_text_example">Du kan få gode råd fra dyrlægen omkring hvordan Monse
+        kan tabe sig. Du kan få gode råd fra dyrlægen omkring hvordan Monse kan tabe sig. Du kan
+        få gode råd fra dyrlægen omkring hvordan Monse kan tabe sig. Monse kan tabe sig.</string>
+    <string name="tooltip_body_text_soon">Her vil du snart kunne læse mere om dit dyrs vacciner</string>
+    <string name="tooltip_close_icon_description">Close icon</string>
+
+    <!-- FaunaRadioButton component -->
+    <string name="radio_button_label_example">Label</string>
+
+    <!-- Switch component -->
+    <string name="switch_label_example">Label</string>
+
+    <!-- FAB component -->
+    <string name="add_button_label">Tilføj</string>
+
 </resources>
