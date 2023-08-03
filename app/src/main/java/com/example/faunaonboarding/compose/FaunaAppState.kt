@@ -9,10 +9,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.faunaonboarding.R
+import com.example.faunaonboarding.animalCreate.AnimalCreateDestination
+import com.example.faunaonboarding.animalCreate.AnimalTypeSelectDestination
 import com.example.faunaonboarding.compose.navigation.FaunaNavigationDestination
 import com.example.faunaonboarding.compose.navigation.TopLevelDestination
 import com.example.faunaonboarding.compose.Icon.DrawableResourceIcon
+import com.example.faunaonboarding.login.OtpVerificationCodeDestination
+import com.example.faunaonboarding.login.PhoneNumberDestination
 import com.example.faunaonboarding.onboarding.OnBoardingDestination
+import com.example.faunaonboarding.onboarding.userCreate.UserCreateDestination
+import com.example.faunaonboarding.welcome.WelcomeDestination
 
 @Composable
 fun rememberFaunaAppState(
@@ -34,10 +40,12 @@ class FaunaAppState(
     fun shouldShowBottomBar(currentDestination: NavDestination?): Boolean {
         //return topLevelDestinations.find { it.route == currentDestination?.route } != null
         return currentDestination?.route != OnBoardingDestination.route
-//                && currentDestination?.route != WelcomeDestination.route
-//                && currentDestination?.route != AnimalCreateDestination.route
-//                && currentDestination?.route != PhoneNumberDestination.route
-//                && currentDestination?.route != AccessCodeDestination.route
+                && currentDestination?.route != WelcomeDestination.route
+                && currentDestination?.route != AnimalCreateDestination.route
+                && currentDestination?.route != PhoneNumberDestination.route
+                && currentDestination?.route != UserCreateDestination.route
+                && currentDestination?.route != OtpVerificationCodeDestination.route
+                && currentDestination?.route != AnimalTypeSelectDestination.route
     }
 
     /**
