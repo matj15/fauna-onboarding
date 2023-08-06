@@ -145,6 +145,9 @@ dependencies {
 
     // Preferences
     implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0'
+
+    // Mockito
+    testImplementation "io.mockk:mockk:1.10.5"
 }
 
 kapt {
