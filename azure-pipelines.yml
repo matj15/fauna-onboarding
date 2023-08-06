@@ -14,13 +14,14 @@ steps:
   displayName: 'Building Project'
   continueOnError: false
   inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
-    # testResultsFiles: '**/TEST-*.xml'
-    testResultsFiles: 'app/build/test-results/azure-pipelines'
+    gradleWrapperFile: './gradlew'
     tasks: 'assembleDebug'
+    publishJUnitResults: true
+    testResultsFiles: 'app/build/test-results/azure-pipelines'
+    javaHomeOption: 'JDKVersion'
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
     
 # - bash: |
 #    ./gradlew test
