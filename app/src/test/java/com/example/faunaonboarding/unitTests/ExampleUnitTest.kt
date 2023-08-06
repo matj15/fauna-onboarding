@@ -1,4 +1,4 @@
-package com.example.faunaonboarding
+package com.example.faunaonboarding.unitTests
 
 import org.junit.Test
 
