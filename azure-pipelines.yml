@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: Gradle@2
+- task: Gradle@3
   displayName: 'Building Project'
   continueOnError: false
   inputs:
@@ -22,8 +22,14 @@ steps:
     gradleOptions: '-Xmx3072m'
     sonarQubeRunAnalysis: false
     spotBugsAnalysis: false
+    sqGradlePluginVersionChoice: specify
     
 # - bash: |
 #    ./gradlew test
+#  displayName: 'Running Tests'
+#  continueOnError: false
+
+#- bash: |
+#    ./gradlew assemble
 #  displayName: 'Running Tests'
 #  continueOnError: false
