@@ -7,25 +7,28 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'macos-latest'
 
 steps:
-#- task: Gradle@2
-#  displayName: 'Building Project'
-#  continueOnError: false
-#  inputs:
-#    gradleWrapperFile: './gradlew'
-#    tasks: 'assembleDebug'
-#    publishJUnitResults: true
-#    testResultsFiles: 'app/build/test-results/azure-pipelines'
-#    javaHomeOption: 'JDKVersion'
-#    gradleOptions: '-Xmx3072m'
-#    sonarQubeRunAnalysis: false
-#    spotBugsAnalysis: false   
+- script: chmod +x ./gradlew
+
+- task: Gradle@2
+  displayName: 'Building Project'
+  continueOnError: false
+  inputs:
+    gradleWrapperFile: './gradlew'
+    tasks: 'assembleDebug'
+    publishJUnitResults: true
+    testResultsFiles: 'app/build/test-results/azure-pipelines'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false   
+  
 - bash: |
     ./gradlew test
   displayName: 'Running Tests'
-  continueOnError: false
 
 #- bash: |
 #    ./gradlew assemble
