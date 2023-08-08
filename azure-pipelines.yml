@@ -1,0 +1,50 @@
+# Android
+# Build your Android project with Gradle.
+# Add steps that test, sign, and distribute the APK, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/android
+
+trigger:
+- master
+
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+- script: chmod +x ./gradlew
+  displayName: 'Make Gradle Executable'
+
+- task: Gradle@2
+  displayName: 'Building Project'
+  continueOnError: false
+  inputs:
+    gradleWrapperFile: './gradlew'
+    publishJUnitResults: true
+#    testResultsFiles: 'app/build/test-results/azure-pipelines'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'   
+    
+- task: Gradle@2
+  displayName: 'Running Tests'
+  continueOnError: false
+  inputs:
+#    workingDirectory: ''
+    gradleWrapperFile: './gradlew'
+    publishJUnitResults: true
+#    testResultsFiles: 'app/build/test-results/azure-pipelines'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    gradleOptions: '-Xmx3072m'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'test'  
+
+#- bash: |
+#    ./gradlew assemble
+#  displayName: 'Running Tests'
+#  continueOnError: false
