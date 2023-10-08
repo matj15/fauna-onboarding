@@ -29,6 +29,8 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Devices
@@ -194,7 +196,10 @@ fun AnimalInfoCard(
             OutlinedTextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.3F),
+                    .weight(0.3F)
+                    .semantics {
+                        testTag = "name-field"
+                    },
                 value = animalCreateInputUIState.name,
                 label = { Text(stringResource(R.string.animal_create_name)) },
                 keyboardOptions = KeyboardOptions(
@@ -213,7 +218,10 @@ fun AnimalInfoCard(
             )
             OutlinedTextField(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .semantics {
+                        testTag = "chipnumber-field"
+                    },
                 value = animalCreateInputUIState.identificationNumber,
                 label = { Text(stringResource(R.string.animal_create_identification_number)) },
                 keyboardOptions = KeyboardOptions(
@@ -233,7 +241,10 @@ fun AnimalInfoCard(
             OutlinedTextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .focusRequester(focusRequester),
+                    .focusRequester(focusRequester)
+                    .semantics {
+                        testTag = "chipnumber2-field"
+                    },
                 value = animalCreateInputUIState.identificationNumberConfirm,
                 label = { Text(stringResource(R.string.animal_create_identification_number_confirm)) },
                 keyboardOptions = KeyboardOptions(
