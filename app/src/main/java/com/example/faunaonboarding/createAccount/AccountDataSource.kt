@@ -1,54 +1,24 @@
 package com.example.faunaonboarding.createAccount
 
+import androidx.compose.runtime.mutableStateOf
 import com.example.faunaonboarding.util.User
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AccountDataSource @Inject constructor(
-//    private val apolloClient: ApolloClient,
+open class AccountDataSource @Inject constructor(
     private val user: User
 ) {
+    private val loginSuccessful = mutableStateOf(true)
+    private val accessCodeSuccessful = mutableStateOf(true)
 
-//    fun requestLoginCode(phone: String): Flow<Result<Boolean>> {
-//        return apolloClient.mutate(AccessInvitationResendMutation(phone)).toFlow()
-//            .onEach {
-//                UIState.Loading
-//            }
-//            .map {
-//                it.toResult {
-//                    it.accessInvitationResend
-//                }
-//            }
-//            .catch {
-//                Result.Error(it.toString())
-//            }
-//    }
-
-    fun requestLoginCode(phone: String): Boolean {
-        // TODO mock
-        return true
+    open fun requestLoginCode(phone: String): Flow<Result<Boolean>> {
+        return flow { emit(Result.success(accessCodeSuccessful.value)) }
     }
 
-//    fun login(phone: String, accessCode: String): Flow<Result<Boolean>> {
-//        return apolloClient.mutate(LoginMutation(phone, accessCode)).toFlow()
-//            .onEach {
-//                UIState.Loading
-//            }
-//            .map {
-//                it.toResult { data ->
-//                    //TODO Should we do this here?
-//                    user.setToken(data.login.token)
-//                    true
-//                }
-//            }
-//            .catch {
-//                Result.Error(this.toString())
-//            }
-//    }
-
-    fun login(phone: String, accessCode: String): Boolean {
-        // TODO mock
-        return true
+    open fun login(phone: String, accessCode: String): Flow<Result<Boolean>> {
+        return flow { emit(Result.success(loginSuccessful.value)) }
     }
 }
