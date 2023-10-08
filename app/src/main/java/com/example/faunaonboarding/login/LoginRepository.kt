@@ -1,18 +1,22 @@
 package com.example.faunaonboarding.login
 
 import com.example.faunaonboarding.createAccount.AccountDataSource
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.coroutines.CoroutineContext
 
 @Singleton
-class LoginRepository @Inject constructor(
+open class LoginRepository @Inject constructor(
     private val accountDataSource: AccountDataSource,
-//    override val coroutineContext: CoroutineContext,
-) {
-//    private val scope = CoroutineScope(coroutineContext)
+    override val coroutineContext: CoroutineContext = Dispatchers.IO,
+) : CoroutineScope {
+    private val scope = CoroutineScope(coroutineContext)
 
     private val requestCodeFlow = MutableSharedFlow<Result<Boolean>>(
         replay = 1,
@@ -21,12 +25,10 @@ class LoginRepository @Inject constructor(
 
     val getRequestCodeFlow: Flow<Result<Boolean>> = requestCodeFlow
 
-    fun requestCode(phone: String): Result<Boolean> {
-//        accountDataSource.requestLoginCode(phone).collect {
-//            requestCodeFlow.emit(it)
-//        }
-        return (Result.success(true))
-
+    open suspend fun requestCode(phone: String) = scope.async {
+        accountDataSource.requestLoginCode(phone).collect {
+            requestCodeFlow.emit(it)
+        }
     }
 
     private val accessCodeFlow = MutableSharedFlow<Result<Boolean>>(
@@ -36,10 +38,9 @@ class LoginRepository @Inject constructor(
 
     val getLoginFlow: Flow<Result<Boolean>> = accessCodeFlow
 
-    suspend fun login(phone: String, accessToken: String): Result<Boolean> {
-//        accountDataSource.login(phone, accessToken).collect {
-//            accessCodeFlow.emit(it)
-//        }
-        return (Result.success(true))
+    open suspend fun login(phone: String, accessToken: String) = scope.async {
+        accountDataSource.login(phone, accessToken).collect {
+            accessCodeFlow.emit(it)
+        }
     }
 }
