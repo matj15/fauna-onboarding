@@ -20,10 +20,6 @@ class UserCreateViewModel @Inject constructor(
     private val userCreateRepository: UserCreateRepository
 ) : ViewModel() {
 
-    companion object {
-        const val phoneNumberLength = 8
-    }
-
     private val _userName = MutableStateFlow("")
     private val _userEmail = MutableStateFlow("")
     private val _userPhoneNumber = MutableStateFlow("")

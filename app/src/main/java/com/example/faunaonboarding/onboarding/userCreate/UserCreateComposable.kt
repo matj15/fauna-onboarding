@@ -113,9 +113,11 @@ fun UserCreateComposable(
                             onContinueClick = onContinueClick
                         )
                     }
-                    Box(modifier = Modifier
-                        .weight(0.1F)
-                        .align(Alignment.CenterHorizontally)) {
+                    Box(
+                        modifier = Modifier
+                            .weight(0.1F)
+                            .align(Alignment.CenterHorizontally)
+                    ) {
                         FaunaButton(
                             modifier = Modifier
                                 .fillMaxWidth(0.4F),
@@ -124,7 +126,8 @@ fun UserCreateComposable(
                             contentColor = MaterialTheme.colorScheme.onPrimary,
                             onClick = {
                                 if (userCreateInputUIState.continueEnabled()) onContinueClick()
-                            }
+                            },
+                            enabled = userCreateInputUIState.continueEnabled()
                         )
                     }
                     Spacer(modifier = Modifier.weight(0.06F))
