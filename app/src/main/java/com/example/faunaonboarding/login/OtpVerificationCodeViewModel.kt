@@ -66,8 +66,7 @@ class OtpVerificationCodeViewModel @Inject constructor(
     }
 
     fun login() = viewModelScope.launch {
-//        loginRepository.login(_phoneNumber, otpCode.joinToString("")).await()
-        loginRepository.login(_phoneNumber, otpCode.joinToString(""))
+        loginRepository.login(_phoneNumber, otpCode.joinToString("")).await()
     }
 
     private val otpVerificationCodeValidationUiState: StateFlow<ValidationUiState> =
