@@ -3,7 +3,7 @@ package com.example.faunaonboarding.onboarding.userCreate
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.faunaonboarding.login.LoginRepository
+import com.example.faunaonboarding.login.PhoneNumberViewModel
 import com.example.faunaonboarding.login.PhoneNumberViewModel.Companion.phoneNumberLength
 import com.example.faunaonboarding.login.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserCreateViewModel @Inject constructor(
-    private val loginRepository: LoginRepository
+    private val userCreateRepository: UserCreateRepository
 ) : ViewModel() {
 
     companion object {
@@ -27,9 +27,9 @@ class UserCreateViewModel @Inject constructor(
     private val _userName = MutableStateFlow("")
     private val _userEmail = MutableStateFlow("")
     private val _userPhoneNumber = MutableStateFlow("")
-    private val _userCheckboxChecked = MutableStateFlow(false)
+    private val _userCheckboxChecked = MutableStateFlow(true)
+    private val _uiState = MutableStateFlow<UIState>(UIState.Success)
 
-    private val _uiState = MutableStateFlow<UIState>(UIState.Initial)
 
     fun setName(it: String) {
         _userName.value = it
@@ -41,20 +41,17 @@ class UserCreateViewModel @Inject constructor(
     }
 
     fun setPhoneNumber(it: String) {
-        _userPhoneNumber.value = it
-
+        if (it.length <= PhoneNumberViewModel.phoneNumberLength) {
+            _userPhoneNumber.value = it
+        }
     }
 
     fun setCheckboxCheckedStatus(it: Boolean) {
         _userCheckboxChecked.value = it
     }
 
-    fun requestLoginCode() = viewModelScope.launch {
-        loginRepository.requestCode(_userPhoneNumber.value)
-    }
-
-    fun createUser() {
-        /* TODO implement? */
+    fun createUser() = viewModelScope.launch {
+        userCreateRepository.userCreate(_userName.value, _userPhoneNumber.value, _userEmail.value)
     }
 
     val userCreateUiState: StateFlow<UserCreateUIState> =
@@ -91,26 +88,20 @@ class UserCreateViewModel @Inject constructor(
 
 data class UserCreateUIState(
     val result: UIState = UIState.Initial,
-    val inputUIState: UserCreateInputUIState = UserCreateInputUIState(
-        "",
-        "",
-        "",
-        false
-    )
+    val inputUIState: UserCreateInputUIState = UserCreateInputUIState()
 )
 
 data class UserCreateInputUIState(
-    val name: String,
-    val email: String,
-    val phoneNumber: String,
-    val checkboxChecked: Boolean,
+    val name: String = "",
+    val email: String = "",
+    val phoneNumber: String = "",
+    val checkboxChecked: Boolean = false
 )
 
 fun UserCreateInputUIState.isNameError(): Boolean {
     return this.name.isBlank()
 }
 
-// TODO check if email / phone already exists in DB?
 fun UserCreateInputUIState.isEmailError(): Boolean {
     return !Patterns.EMAIL_ADDRESS.matcher(this.email).matches()
 }

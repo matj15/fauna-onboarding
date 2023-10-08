@@ -47,7 +47,7 @@ fun UserCreateRoute(
         onCheckboxCheckedChanged = userCreateViewModel::setCheckboxCheckedStatus,
         onContinueClick = {
             if (userCreateScreenUiState.inputUIState.continueEnabled()) {
-                userCreateViewModel.requestLoginCode()
+                userCreateViewModel.createUser()
                 onContinueClick()
             }
         },
