@@ -31,6 +31,8 @@ class PhoneNumberViewModel @Inject constructor(
     fun setPhoneNumber(it: String) {
         if (it.length <= phoneNumberLength) {
             _phoneNumberFlow.value = it
+        } else {
+         // TODO throw exception?
         }
     }
 

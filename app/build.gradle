@@ -148,6 +148,15 @@ dependencies {
 
     // Mockito
     testImplementation "io.mockk:mockk:1.10.5"
+
+    // For InstantTaskExecutorRule
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+
+    // For MainCoroutineScopeRule
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+
+    testImplementation "org.jetbrains.kotlin:kotlin-gradle-plugin"
+    testImplementation "com.android.tools.build:gradle"
 }
 
 kapt {
@@ -168,3 +177,4 @@ apply plugin: "com.apollographql.apollo"
 apply plugin: "kotlin-kapt"
 apply plugin: 'kotlin-android'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-android-extensions'
