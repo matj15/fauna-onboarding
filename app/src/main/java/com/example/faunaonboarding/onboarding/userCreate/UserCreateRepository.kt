@@ -11,7 +11,7 @@ import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
 @Singleton
-class UserCreateRepository @Inject constructor(
+open class UserCreateRepository @Inject constructor(
     private val accountDataSource: AccountDataSource,
     coroutineContext: CoroutineContext = Dispatchers.IO
 ) {
