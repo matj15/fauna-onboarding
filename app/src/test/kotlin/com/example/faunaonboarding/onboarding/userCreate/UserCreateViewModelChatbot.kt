@@ -16,6 +16,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.junit.Assert.*
 import org.junit.Rule
+import org.mockito.MockitoAnnotations
 
 @ExperimentalCoroutinesApi
 class UserCreateViewModelTestChatbot {
@@ -30,6 +31,7 @@ class UserCreateViewModelTestChatbot {
 
     @Before
     fun setUp() {
+        MockitoAnnotations.initMocks(this)
         userCreateViewModel = UserCreateViewModel(userCreateRepository)
     }
 
