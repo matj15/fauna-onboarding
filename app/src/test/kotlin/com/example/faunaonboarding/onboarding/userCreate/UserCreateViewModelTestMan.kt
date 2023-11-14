@@ -101,7 +101,7 @@ class UserCreateViewModelTestMan {
 //    }
 
     @Test
-    fun setNameValidationCorrect() {
+    fun setName_ValidName_ValidationCorrect() {
         val inputUIState = UserCreateInputUIState(name = "John Doe")
 
         val isNameError = inputUIState.isNameError()
@@ -110,7 +110,7 @@ class UserCreateViewModelTestMan {
     }
 
     @Test
-    fun setNameValidationIncorrect() {
+    fun setName_InvalidName_ValidationIncorrect() {
         val inputUIState = UserCreateInputUIState(name = "")
 
         val isNameError = inputUIState.isNameError()
@@ -119,7 +119,7 @@ class UserCreateViewModelTestMan {
     }
 
     @Test
-    fun setEmailValidationCorrect() {
+    fun setEmail_ValidEmail_ValidationCorrect() {
         val inputUIState = UserCreateInputUIState(email = "email@example.com")
 
         val isEmailError = inputUIState.isEmailError()
@@ -128,7 +128,7 @@ class UserCreateViewModelTestMan {
     }
 
     @Test
-    fun setEmailValidationIncorrect() {
+    fun setEmail_InvalidEmail_ValidationIncorrect() {
         val inputUIState = UserCreateInputUIState(email = "invalid_email")
 
         val isEmailError = inputUIState.isEmailError()
@@ -137,7 +137,7 @@ class UserCreateViewModelTestMan {
     }
 
     @Test
-    fun setPhoneNumberValidationCorrect() {
+    fun setPhoneNumber_ValidPhoneNumber_ValidationCorrect() {
         val inputUIState = UserCreateInputUIState(phoneNumber = "12345678")
 
         val isPhoneNumberError = inputUIState.isPhoneNumberError()
@@ -146,7 +146,7 @@ class UserCreateViewModelTestMan {
     }
 
     @Test
-    fun setPhoneNumberValidationIncorrect() {
+    fun setPhoneNumber_InvalidPhoneNumber_ValidationIncorrect() {
         val inputUIState = UserCreateInputUIState(phoneNumber = "")
 
         val isPhoneNumberError = inputUIState.isPhoneNumberError()
@@ -156,7 +156,7 @@ class UserCreateViewModelTestMan {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun testCreateUser() = runTest {
+    fun createUser_ValidData_UserCreatedSuccessfully() = runTest {
         // Arrange
         val testName = "John Doe"
         val testPhoneNumber = "1234567890"
