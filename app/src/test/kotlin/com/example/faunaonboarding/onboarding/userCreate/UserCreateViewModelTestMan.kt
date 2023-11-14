@@ -20,8 +20,8 @@ import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
-@RunWith(JUnit4::class)
-class UserCreateViewModelTestMan {
+//@RunWith(JUnit4::class)
+//class UserCreateViewModelTestMan {
 //
 //    private lateinit var userCreateViewModel: UserCreateViewModel
 //    private lateinit var userCreateRepository: UserCreateRepository
@@ -198,4 +198,4 @@ class UserCreateViewModelTestMan {
 //        // Assert
 //        assert(isContinueEnabled)
 //    }
-}
+//}
