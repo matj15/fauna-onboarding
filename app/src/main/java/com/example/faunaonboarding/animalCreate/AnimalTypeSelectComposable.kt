@@ -1,13 +1,13 @@
 package com.example.faunaonboarding.animalCreate
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,7 +29,7 @@ import com.example.faunaonboarding.compose.components.button.ToggleButton
 import com.example.faunaonboarding.ui.theme.FaunaTheme
 import com.example.faunaonboarding.ui.theme.Space
 import com.example.faunaonboarding.util.AnimalType
-import com.example.faunaonboarding.util.drawable
+import com.example.faunaonboarding.util.translationResource
 
 // TODO fetch from database?
 val animalTypes = listOf(
@@ -44,7 +44,7 @@ fun AnimalTypeSelectRoute(
     onCloseClick: () -> Unit,
     animalCreateViewModel: AnimalCreateViewModel = hiltViewModel()
 ) {
-    val animalCreateUIState by animalCreateViewModel.animalCreateUIState.collectAsStateWithLifecycle()
+    val animalCreateUIState by animalCreateViewModel.animalCreateScreenUIState.collectAsStateWithLifecycle()
     val timer by animalCreateViewModel.counter.collectAsStateWithLifecycle()
 
     if (timer == 0) {
@@ -102,34 +102,81 @@ fun AnimalTypeSelectComposable(
                 )
                 Spacer(modifier = Modifier.padding(bottom = Space.SPACE16))
 
-                Box(modifier = Modifier.weight(0.9F)) {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(2),
-                        contentPadding = PaddingValues(
-                            bottom = Space.SPACE16,
-                            start = Space.SPACE16,
-                            end = Space.SPACE16
-                        )
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = Space.SPACE24)
+                        .weight(0.4F)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        items(animalTypes.size) { index ->
-                            // TODO make sure it works and displays it correctly
-                            ToggleButton(
-                                image = animalTypes[index].drawable(),
-                                backgroundEllipse = when (animalTypes[index]) {
-                                    AnimalType.DOG -> R.drawable.ellipse_background_small_top_left
-                                    else -> R.drawable.ellipse_background_small_bottom_left
-                                },
-                                backgroundEllipseColor = MaterialTheme.colorScheme.primaryContainer,
-                                onClick = {
-                                    onAnimalTypeChanged(animalTypes[index])
-                                    onContinueClick()
-                                },
-                                chosen = animalTypes[index] == animalChosen,
-                                text = stringResource(id = animalTypes[index].drawable())
-                            )
-                        }
+                        ToggleButton(
+                            modifier = Modifier
+                                .fillMaxWidth(0.5F)
+                                .padding(end = Space.SPACE8),
+                            image = R.drawable.dog_head,
+                            backgroundEllipse = when (animalTypes[0]) {
+                                AnimalType.DOG -> R.drawable.ellipse_background_small_top_left
+                                else -> R.drawable.ellipse_background_small_bottom_left
+                            },
+                            backgroundEllipseColor = MaterialTheme.colorScheme.primaryContainer,
+                            onClick = {
+                                onAnimalTypeChanged(animalTypes[0])
+                                onContinueClick()
+                            },
+                            chosen = animalTypes[0] == animalChosen,
+                            text = stringResource(id = animalTypes[0].translationResource())
+                        )
+
+                        ToggleButton(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = Space.SPACE8),
+                            image = R.drawable.cat_head,
+                            backgroundEllipse = when (animalTypes[1]) {
+                                AnimalType.DOG -> R.drawable.ellipse_background_small_top_left
+                                else -> R.drawable.ellipse_background_small_bottom_left
+                            },
+                            backgroundEllipseColor = MaterialTheme.colorScheme.primaryContainer,
+                            onClick = {
+                                onAnimalTypeChanged(animalTypes[1])
+                                onContinueClick()
+                            },
+                            chosen = animalTypes[1] == animalChosen,
+                            text = stringResource(id = animalTypes[1].translationResource())
+                        )
                     }
+//                    LazyVerticalGrid(
+//                        columns = GridCells.Fixed(2),
+//                        contentPadding = PaddingValues(
+//                            bottom = Space.SPACE16,
+//                            start = Space.SPACE16,
+//                            end = Space.SPACE16
+//                        ),
+//                        modifier = Modifier.fillMaxSize()
+//                    ) {
+//                        items(animalTypes.size) { index ->
+//                            // TODO make sure it works and displays it correctly
+//                            ToggleButton(
+//                                image = R.drawable.dog_head,
+//                                backgroundEllipse = when (animalTypes[index]) {
+//                                    AnimalType.DOG -> R.drawable.ellipse_background_small_top_left
+//                                    else -> R.drawable.ellipse_background_small_bottom_left
+//                                },
+//                                backgroundEllipseColor = MaterialTheme.colorScheme.primaryContainer,
+//                                onClick = {
+//                                    onAnimalTypeChanged(animalTypes[index])
+//                                    onContinueClick()
+//                                },
+//                                chosen = animalTypes[index] == animalChosen,
+//                                text = stringResource(id = animalTypes[index].translationResource())
+//                            )
+//                        }
+//                    }
                 }
+
+                Spacer(modifier = Modifier.weight(0.9F))
             }
         }
     })
