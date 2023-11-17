@@ -9,16 +9,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.faunaonboarding.R
+import com.example.faunaonboarding.animal.AnimalDestination
 import com.example.faunaonboarding.animalCreate.AnimalCreateDestination
 import com.example.faunaonboarding.animalCreate.AnimalTypeSelectDestination
 import com.example.faunaonboarding.compose.navigation.FaunaNavigationDestination
 import com.example.faunaonboarding.compose.navigation.TopLevelDestination
 import com.example.faunaonboarding.compose.Icon.DrawableResourceIcon
-import com.example.faunaonboarding.login.OtpVerificationCodeDestination
+import com.example.faunaonboarding.login.AccessCodeDestination
 import com.example.faunaonboarding.login.PhoneNumberDestination
 import com.example.faunaonboarding.onboarding.OnBoardingDestination
 import com.example.faunaonboarding.onboarding.userCreate.UserCreateDestination
 import com.example.faunaonboarding.welcome.WelcomeDestination
+import com.example.faunaonboarding.welcomeToFauna.WelcomeToFaunaDestination
 
 @Composable
 fun rememberFaunaAppState(
@@ -44,8 +46,10 @@ class FaunaAppState(
                 && currentDestination?.route != AnimalCreateDestination.route
                 && currentDestination?.route != PhoneNumberDestination.route
                 && currentDestination?.route != UserCreateDestination.route
-                && currentDestination?.route != OtpVerificationCodeDestination.route
+                && currentDestination?.route != AccessCodeDestination.route
                 && currentDestination?.route != AnimalTypeSelectDestination.route
+                && currentDestination?.route != WelcomeToFaunaDestination.route
+                && currentDestination?.route != AnimalDestination.route
     }
 
     /**
@@ -59,20 +63,6 @@ class FaunaAppState(
             unselectedIcon = DrawableResourceIcon(FaunaIcons.homeUnselected),
             iconTextId = R.string.title_nav_bar_pet
         ),
-//        TopLevelDestination(
-//            route = VaccinationsDestination.route,
-//            destination = VaccinationsDestination.destination,
-//            selectedIcon = DrawableResourceIcon(FaunaIcons.vaccinationsSelected),
-//            unselectedIcon = DrawableResourceIcon(FaunaIcons.vaccinationsUnselected),
-//            iconTextId = R.string.title_nav_bar_vaccinations
-//        ),
-//        TopLevelDestination(
-//            route = HouseholdDestination.route,
-//            destination = HouseholdDestination.destination,
-//            selectedIcon = DrawableResourceIcon(FaunaIcons.householdSelected),
-//            unselectedIcon = DrawableResourceIcon(FaunaIcons.householdUnselected),
-//            iconTextId = R.string.title_nav_bar_household
-//        )
     )
 
     /**
