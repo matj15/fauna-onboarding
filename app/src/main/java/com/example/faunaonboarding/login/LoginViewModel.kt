@@ -6,8 +6,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.faunaonboarding.login.LoginRepository
-import com.example.faunaonboarding.login.UIState
 import com.example.faunaonboarding.util.ValidationUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -15,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OtpVerificationCodeViewModel @Inject constructor(
+class AccessCodeViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val loginRepository: LoginRepository
 ) : ViewModel() {
@@ -25,30 +23,44 @@ class OtpVerificationCodeViewModel @Inject constructor(
     // TODO modify to only user StateFlow
     private val _otpCodeFlow = MutableStateFlow("0000")
 
+    private val _accessCodeFlow: MutableStateFlow<String> = MutableStateFlow("")
+    private val _currentFocusIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+
 
     var isOtpError = mutableStateOf(false)
 
-    val focusRequesters = List(otpCodeLength) { FocusRequester() }
+    val focusRequesters = List(accessCodeLength) { FocusRequester() }
     var currentFocusIndex = mutableStateOf(0)
 
     companion object {
-        const val otpCodeLength = 4
+        const val accessCodeLength = 4
     }
 
     private val _phoneNumber: String = checkNotNull(
-        savedStateHandle[OtpVerificationCodeDestination.phoneNumberArg]
+        savedStateHandle[AccessCodeDestination.phoneNumberArg]
     )
 
-    fun setOtp(index: Int, value: String) {
-        if (index >= 0 && index < otpCode.size) {
-            _otpCodeFlowList[index] = value
+//    fun setOtp(index: Int, value: String) {
+//        if (index >= 0 && index < otpCode.size) {
+//            _otpCodeFlowList[index] = value
+//
+//            // Move focus to the next field when a digit is entered
+//            if (index < _otpCodeFlowList.size - 1 && value.isNotBlank()) {
+//                currentFocusIndex.value = index + 1
+//                focusRequesters[currentFocusIndex.value].requestFocus()
+//            }
+//        }
+//    }
 
-            // Move focus to the next field when a digit is entered
-            if (index < _otpCodeFlowList.size - 1 && value.isNotBlank()) {
-                currentFocusIndex.value = index + 1
-                focusRequesters[currentFocusIndex.value].requestFocus()
-            }
-        }
+    fun setAccessCode(value: String) {
+        _accessCodeFlow.value = value
+//        if (_accessCodeFlow.value.length == accessCodeLength) {
+//            authenticate()
+//        }
+    }
+
+    fun getAccessCode(): String {
+        return _accessCodeFlow.value
     }
 
     fun clearOtp() {
@@ -65,14 +77,14 @@ class OtpVerificationCodeViewModel @Inject constructor(
         return enteredOtp == "1234"
     }
 
-    fun login() = viewModelScope.launch {
-        loginRepository.login(_phoneNumber, otpCode.joinToString("")).await()
+    fun authenticate() = viewModelScope.launch {
+        loginRepository.login(_phoneNumber, _accessCodeFlow.value).await()
     }
 
     private val otpVerificationCodeValidationUiState: StateFlow<ValidationUiState> =
         _otpCodeFlow
             .map {
-                if (it.length == otpCodeLength) {
+                if (it.length == accessCodeLength) {
                     return@map ValidationUiState.Valid
                 }
                 return@map ValidationUiState.InValid
@@ -83,8 +95,8 @@ class OtpVerificationCodeViewModel @Inject constructor(
                 initialValue = ValidationUiState.InValid
             )
 
-    private val getLoginUiState: StateFlow<UIState> =
-        loginRepository.getLoginFlow
+    private val _loginUiStateFlow: StateFlow<UIState> =
+        loginRepository.accessCode
             .map { result ->
                 when (result) {
                     // TODO loading?
@@ -99,43 +111,50 @@ class OtpVerificationCodeViewModel @Inject constructor(
                 initialValue = UIState.Initial
             )
 
-    val loginScreenUiState: StateFlow<OtpVerificationCodeScreenUiState> =
+    val loginScreenUiState: StateFlow<AccessCodeScreenUiState> =
         combine(
-            getLoginUiState,
-            otpVerificationCodeValidationUiState,
-        ) { loginUIState, phoneNumberValidation ->
-            OtpVerificationCodeScreenUiState(
+            _loginUiStateFlow,
+            _accessCodeFlow,
+            _currentFocusIndex
+        ) { loginUIState, phoneNumberValidation, currentFocusIndex ->
+            AccessCodeScreenUiState(
                 loginUIState,
-                phoneNumberValidation
+                phoneNumberValidation,
+                currentFocusIndex
             )
         }
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = OtpVerificationCodeScreenUiState()
+                initialValue = AccessCodeScreenUiState()
             )
 }
 
-data class OtpVerificationCodeScreenUiState(
+//data class AccessCodeScreenUiState(
+//    val login: UIState = UIState.Initial,
+//    val phoneNumberValidation: ValidationUiState = ValidationUiState.InValid
+//)
+
+data class AccessCodeScreenUiState(
     val login: UIState = UIState.Initial,
-    val phoneNumberValidation: ValidationUiState = ValidationUiState.InValid
+    val accessCode: String = "",
+    val currentAccessCodeIndex: Int = 0
 )
 
-fun OtpVerificationCodeScreenUiState.submitEnabled(): Boolean {
+fun AccessCodeScreenUiState.isEnabled(): Boolean {
     return when (this.login) {
         UIState.Loading, UIState.Success -> false
-        UIState.Error -> true
-        UIState.Initial -> phoneNumberValidation is ValidationUiState.Valid
+        else -> true
     }
 }
 
-fun OtpVerificationCodeScreenUiState.isError(): Boolean {
-    return when (this.login) {
-        UIState.Error -> true
-        else -> false
+fun AccessCodeScreenUiState.isError(): Boolean {
+    return when (this.accessCode) {
+        "1234" -> false
+        else -> true
     }
 }
 
-fun OtpVerificationCodeScreenUiState.receivedAccessCode(): Boolean {
+fun AccessCodeScreenUiState.isAuthenticated(): Boolean {
     return this.login is UIState.Success
 }
