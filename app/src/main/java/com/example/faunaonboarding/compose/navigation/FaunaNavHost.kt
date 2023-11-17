@@ -10,9 +10,9 @@ import com.example.faunaonboarding.animalCreate.AnimalCreateDestination
 import com.example.faunaonboarding.animalCreate.AnimalTypeSelectDestination
 import com.example.faunaonboarding.animalCreate.animalCreateGraph
 import com.example.faunaonboarding.animalCreate.animalTypeSelectGraph
-import com.example.faunaonboarding.login.OtpVerificationCodeDestination
+import com.example.faunaonboarding.login.AccessCodeDestination
 import com.example.faunaonboarding.login.PhoneNumberDestination
-import com.example.faunaonboarding.login.otpVerificationCodeGraph
+import com.example.faunaonboarding.login.accessCodeGraph
 import com.example.faunaonboarding.login.phoneNumberGraph
 import com.example.faunaonboarding.onboarding.OnBoardingDestination
 import com.example.faunaonboarding.onboarding.onBoardingGraph
@@ -49,20 +49,20 @@ fun FaunaNavHost(
                 }
                 phoneNumberGraph {
                     onNavigateToDestination(
-                        OtpVerificationCodeDestination,
-                        OtpVerificationCodeDestination.createNavigationRoute(it)
+                        AccessCodeDestination,
+                        AccessCodeDestination.createNavigationRoute(it)
                     )
                 }
                 userCreateGraph(
-                    showOtpVerificationCode = {
-                        onNavigateToDestination(OtpVerificationCodeDestination, null)
+                    showAccessCode = {
+                        onNavigateToDestination(AccessCodeDestination, null)
                     },
                     onBackClick = onBackClick,
                     onCloseClick = {
                         onNavigateToDestination(OnBoardingDestination, null)
                     }
                 )
-                otpVerificationCodeGraph(
+                accessCodeGraph(
                     showAuthenticated = {
                         onNavigateToDestination(AnimalTypeSelectDestination, null)
                     },

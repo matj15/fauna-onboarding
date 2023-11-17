@@ -2,7 +2,7 @@ package com.example.faunaonboarding.compose.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.faunaonboarding.R
 import com.example.faunaonboarding.ui.theme.FaunaTheme
 import com.example.faunaonboarding.ui.theme.primaryColors
@@ -29,7 +28,7 @@ fun IconBackgroundEllipse(
             contentDescription = "IconBackground",
             tint = tint,
             modifier = Modifier
-                .size(80.dp)
+                .fillMaxSize(0.8F)
         )
 
         Icon(
@@ -37,7 +36,7 @@ fun IconBackgroundEllipse(
             contentDescription = "",
             tint = Color.Unspecified,
             modifier = Modifier
-                .size(40.dp)
+                .fillMaxSize(0.5F)
         )
     }
 }
