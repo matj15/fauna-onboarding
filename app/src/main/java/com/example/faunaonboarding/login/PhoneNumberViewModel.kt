@@ -101,7 +101,7 @@ data class PhoneNumberScreenUiState(
     val phoneNumberValidation: ValidationUiState = ValidationUiState.InValid
 )
 
-fun PhoneNumberScreenUiState.submitEnabled(): Boolean {
+fun PhoneNumberScreenUiState.isEnabled(): Boolean {
     return when (this.requestPhoneNumber) {
         UIState.Loading, UIState.Success -> false
         UIState.Error -> true
@@ -116,6 +116,6 @@ fun PhoneNumberScreenUiState.isError(): Boolean {
     }
 }
 
-fun PhoneNumberScreenUiState.receivedAccessCode(): Boolean {
+fun PhoneNumberScreenUiState.isAuthenticated(): Boolean {
     return this.requestPhoneNumber is UIState.Success
 }

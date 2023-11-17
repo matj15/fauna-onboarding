@@ -43,7 +43,7 @@ fun PhoneNumberScreenComposable(
     val phoneNumberScreenUiState by viewModel.phoneNumberScreenUiState.collectAsStateWithLifecycle()
     val phoneNumber by viewModel.phoneNumber.collectAsStateWithLifecycle()
 
-    if (phoneNumberScreenUiState.receivedAccessCode()) {
+    if (phoneNumberScreenUiState.isAuthenticated()) {
         LaunchedEffect(Unit) {
             showLogin(phoneNumber)
         }
@@ -113,7 +113,7 @@ fun PhoneNumberComposable(
 
             Button(
                 onClick = onRequestedLoginCode,
-                enabled =  phoneNumberScreenUiState.submitEnabled(),
+                enabled =  phoneNumberScreenUiState.isEnabled(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(45.dp)
