@@ -36,7 +36,7 @@ open class LoginRepository @Inject constructor(
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
 
-    val getLoginFlow: Flow<Result<Boolean>> = accessCodeFlow
+    val accessCode: Flow<Result<Boolean>> = accessCodeFlow
 
     open suspend fun login(phone: String, accessToken: String) = scope.async {
         accountDataSource.login(phone, accessToken).collect {
