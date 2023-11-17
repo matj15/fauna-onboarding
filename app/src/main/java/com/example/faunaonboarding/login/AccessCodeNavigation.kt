@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.faunaonboarding.compose.navigation.FaunaNavigationDestination
 
-object OtpVerificationCodeDestination : FaunaNavigationDestination {
+object AccessCodeDestination : FaunaNavigationDestination {
     const val phoneNumberArg = "contentId"
     override val route = "otp_code_route/{$phoneNumberArg}"
     override val destination = "otp_code_destination"
@@ -18,17 +18,17 @@ object OtpVerificationCodeDestination : FaunaNavigationDestination {
     }
 }
 
-fun NavGraphBuilder.otpVerificationCodeGraph(
+fun NavGraphBuilder.accessCodeGraph(
     showAuthenticated: () -> Unit,
     onBackClick: () -> Unit,
     onCloseClick: () -> Unit
 ) {
     composable(
-        route = OtpVerificationCodeDestination.route,
+        route = AccessCodeDestination.route,
         arguments = listOf(
-            navArgument(OtpVerificationCodeDestination.phoneNumberArg) { type = NavType.StringType }
+            navArgument(AccessCodeDestination.phoneNumberArg) { type = NavType.StringType }
         )
     ) {
-        OtpVerificationCodeRoute(showAuthenticated, onBackClick, onCloseClick)
+        AccessCodeRoute(showAuthenticated, onBackClick, onCloseClick)
     }
 }
