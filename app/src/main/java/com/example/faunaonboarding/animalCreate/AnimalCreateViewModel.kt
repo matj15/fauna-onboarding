@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
@@ -34,8 +35,6 @@ class AnimalCreateViewModel @Inject constructor(
     private val _identificationNumber = MutableStateFlow("")
     private val _identificationNumberConfirm = MutableStateFlow("")
 
-    private val _uiState = MutableStateFlow<UIState>(UIState.Initial)
-
     fun setAnimalType(type: AnimalType) {
         _animalType.value = type
     }
@@ -53,7 +52,6 @@ class AnimalCreateViewModel @Inject constructor(
     }
 
     fun createAnimal() = viewModelScope.launch {
-        _uiState.emit(UIState.Loading)
         animalRepository.animalCreate(
             AnimalCreate(
                 type = _animalType.value,
@@ -61,26 +59,30 @@ class AnimalCreateViewModel @Inject constructor(
                 identificationNumber = Input.optional(_identificationNumber.value)
             )
         )
-//            .collect { res ->
-//            when (res) {
-////                Result.Loading -> _uiState.emit(UIState.Loading)
-////                is Result.Error -> _uiState.emit(UIState.Error)
-////                is Result.Success -> {
-////                    _uiState.emit(UIState.Success)
-////                }
-//                Result.success(true) -> UIState.Success
-//                Result.success(false) -> UIState.Error
-//                else -> UIState.Error
-//            }
-//        }
     }
 
-    val animalCreateUIState: StateFlow<AnimalCreateUIState> = combine(
+    private val _animalCreateUiStateFlow: StateFlow<UIState> =
+        animalRepository.getAnimalCreateFlow
+            .map { result ->
+                when (result) {
+                    // TODO loading?
+                    Result.success(true) -> UIState.Success
+                    Result.success(false) -> UIState.Error
+                    else -> UIState.Loading
+                }
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = UIState.Initial
+            )
+
+    val animalCreateScreenUIState: StateFlow<AnimalCreateUIState> = combine(
         _animalType,
         _animalName,
         _identificationNumber,
         _identificationNumberConfirm,
-        _uiState
+        _animalCreateUiStateFlow
     ) { animalType, animalName, identificationNumber, identificationNumberConfirm, uiState ->
         val animalCreateInputUIState = AnimalCreateInputUIState(
             animalType,

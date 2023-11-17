@@ -14,7 +14,7 @@ fun NavGraphBuilder.animalCreateGraph(
     onBackClick: () -> Unit,
     onCloseClick: () -> Unit
 ) {
-    composable(route = AnimalTypeSelectDestination.route) {
+    composable(route = AnimalCreateDestination.route) {
         AnimalCreateRoute(
             onAnimalCreated = onContinueClick,
             onBackClick = onBackClick,

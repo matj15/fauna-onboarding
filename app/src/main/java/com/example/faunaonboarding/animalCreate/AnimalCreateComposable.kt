@@ -58,7 +58,7 @@ fun AnimalCreateRoute(
     onCloseClick: () -> Unit,
     animalCreateViewModel: AnimalCreateViewModel = hiltViewModel()
 ) {
-    val animalCreateUIState by animalCreateViewModel.animalCreateUIState.collectAsStateWithLifecycle()
+    val animalCreateUIState by animalCreateViewModel.animalCreateScreenUIState.collectAsStateWithLifecycle()
     val timer by animalCreateViewModel.counter.collectAsStateWithLifecycle()
 
     if (timer == 0) {
