@@ -11,28 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    # - name: Build with Gradle
-    #   run: ./gradlew build
-
-    - name: Run tests
-      run: ./gradlew test
-
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: app/build/test-results
-
     # testim
     - name: Set up Node.js
       uses: actions/setup-node@v1
@@ -54,6 +32,30 @@ jobs:
       with:
         name: testim-tests-report
         path: testim-tests-report.xml
+
+    # normal tests
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    # - name: Build with Gradle
+
+    #   run: ./gradlew build
+
+    - name: Run tests
+      run: ./gradlew test
+
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: app/build/test-results
 #    - name: Store test results
 #      uses: dorny/test-reporter@v1
 #      if: always()
