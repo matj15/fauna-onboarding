@@ -10,13 +10,13 @@ object UserCreateDestination : FaunaNavigationDestination {
 }
 
 fun NavGraphBuilder.userCreateGraph(
-    showOtpVerificationCode: () -> Unit,
+    showAccessCode: () -> Unit,
     onBackClick: () -> Unit,
     onCloseClick: () -> Unit
 ) {
     composable(route = UserCreateDestination.route) {
         UserCreateRoute(
-            onContinueClick = showOtpVerificationCode,
+            onContinueClick = showAccessCode,
             onBackClick = onBackClick,
             onCloseClick = onCloseClick
         )

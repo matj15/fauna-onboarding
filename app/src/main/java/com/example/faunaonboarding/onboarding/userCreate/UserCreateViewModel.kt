@@ -32,26 +32,26 @@ class UserCreateViewModel @Inject constructor(
 //        _userName.value = it
     }
 
-    fun getName() = _userName.value
+//    fun getName() = _userName.value
 
     fun setEmail(it: String) {
         _userEmail.value = it
     }
 
-    fun getEmail() = _userEmail.value
+//    fun getEmail() = _userEmail.value
 
     fun setPhoneNumber(it: String) {
         if (it.length <= PhoneNumberViewModel.phoneNumberLength) {
             _userPhoneNumber.value = it
         }
     }
-    fun getPhoneNumber() = _userPhoneNumber.value
+//    fun getPhoneNumber() = _userPhoneNumber.value
 
     fun setCheckboxCheckedStatus(it: Boolean) {
         _userCheckboxChecked.value = it
     }
 
-    fun getCheckboxCheckedStatus() = _userCheckboxChecked.value
+//    fun getCheckboxCheckedStatus() = _userCheckboxChecked.value
 
     fun createUser() = viewModelScope.launch {
         userCreateRepository.userCreate(_userName.value, _userPhoneNumber.value, _userEmail.value)
