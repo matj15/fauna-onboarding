@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,13 +23,37 @@ jobs:
       run: chmod +x gradlew
     # - name: Build with Gradle
     #   run: ./gradlew build
+
     - name: Run tests
       run: ./gradlew test
+
     - name: Upload Test Results
       uses: actions/upload-artifact@v2
       with:
         name: test-results
         path: app/build/test-results
+
+    # testim
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+
+    - name: Install and run tests using testim-cli
+      run: |
+        npm install -g @testim/testim-cli
+        testim \
+        --token "GHRzlTtakE6CNR7bIbS7nbCLlC2h51AeQY7yq3VRAmYwQ1OsTi" \
+        --project "YiFgVRXyMdhDGE8Egcar" \
+        --grid "virtual-mobile-grid" \
+        --mode "appium" \
+        --report-file testim-tests-report.xml
+
+    - name: Publish Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: testim-tests-report
+        path: testim-tests-report.xml
 #    - name: Store test results
 #      uses: dorny/test-reporter@v1
 #      if: always()
