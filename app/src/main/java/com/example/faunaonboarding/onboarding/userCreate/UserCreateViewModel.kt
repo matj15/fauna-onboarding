@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,7 +21,8 @@ class UserCreateViewModel @Inject constructor(
     private val userCreateRepository: UserCreateRepository
 ) : ViewModel() {
 
-    private val _userName = MutableStateFlow("i")
+    private val _userName = MutableStateFlow("")
+//    private val _userName = MutableStateFlow("i")
     private val _userEmail = MutableStateFlow("")
     private val _userPhoneNumber = MutableStateFlow("")
     private val _userCheckboxChecked = MutableStateFlow(false)
@@ -28,8 +30,8 @@ class UserCreateViewModel @Inject constructor(
 
 
     fun setName(it: String) {
-        _userName.value = _userName.value
-//        _userName.value = it
+//        _userName.value = _userName.value
+        _userName.value = it
     }
 
     fun getName() = _userName.value
@@ -57,13 +59,29 @@ class UserCreateViewModel @Inject constructor(
         userCreateRepository.userCreate(_userName.value, _userPhoneNumber.value, _userEmail.value)
     }
 
+    private val _userCreateUiStateFlow: StateFlow<UIState> =
+        userCreateRepository.getCreateUserFlow
+            .map { result ->
+                when (result) {
+                    // TODO loading?
+                    Result.success(true) -> UIState.Success
+                    Result.success(false) -> UIState.Error
+                    else -> UIState.Loading
+                }
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = UIState.Initial
+            )
+
     val userCreateUiState: StateFlow<UserCreateUIState> =
         combine(
             _userName,
             _userEmail,
             _userPhoneNumber,
             _userCheckboxChecked,
-            _uiState
+            _userCreateUiStateFlow
         ) { userName,
             userEmail,
             userPhoneNumber,

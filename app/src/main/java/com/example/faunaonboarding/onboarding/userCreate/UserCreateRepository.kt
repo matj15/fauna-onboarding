@@ -21,7 +21,7 @@ open class UserCreateRepository @Inject constructor(
 
     val getCreateUserFlow: Flow<Result<Boolean>> = createUserFlow
 
-    fun userCreate(name: String, phone: String, username: String) = scope.launch {
+    open fun userCreate(name: String, phone: String, username: String) = scope.launch {
         accountDataSource.userCreate(name, phone, username).collect {
             createUserFlow.emit(it)
         }

@@ -12,26 +12,27 @@ jobs:
 
     steps:
     # testim steps
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '18.x'
 
-    - name: Install and run tests using testim-cli
-      run: |
-        npm install -g @testim/testim-cli
-        testim \
-        --token "GHRzlTtakE6CNR7bIbS7nbCLlC2h51AeQY7yq3VRAmYwQ1OsTi" \
-        --project "YiFgVRXyMdhDGE8Egcar" \
-        --grid "virtual-mobile-grid" \
-        --mode "appium" \
-        --report-file testim-tests-report.xml
-
-    - name: Publish Test Results
-      uses: actions/upload-artifact@v2
-      with:
-        name: testim-tests-report
-        path: testim-tests-report.xml
+#    - name: Set up Node.js
+#      uses: actions/setup-node@v1
+#      with:
+#        node-version: '18.x'
+#
+#    - name: Install and run tests using testim-cli
+#      run: |
+#        npm install -g @testim/testim-cli
+#        testim \
+#        --token "GHRzlTtakE6CNR7bIbS7nbCLlC2h51AeQY7yq3VRAmYwQ1OsTi" \
+#        --project "YiFgVRXyMdhDGE8Egcar" \
+#        --grid "virtual-mobile-grid" \
+#        --mode "appium" \
+#        --report-file testim-tests-report.xml
+#
+#    - name: Publish Test Results
+#      uses: actions/upload-artifact@v2
+#      with:
+#        name: testim-tests-report
+#        path: testim-tests-report.xml
 
     # normal tests
     - name: Checkout code

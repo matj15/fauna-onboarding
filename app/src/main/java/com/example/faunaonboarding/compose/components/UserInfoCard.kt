@@ -27,6 +27,9 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -75,7 +78,8 @@ fun UserInfoCard(
             OutlinedTextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(0.3F),
+                    .weight(0.3F)
+                    .semantics { testTag = "userName" },
                 value = userCreateInputUIState.name,
                 label = { Text(stringResource(R.string.user_create_name)) },
                 keyboardOptions = KeyboardOptions(
@@ -94,7 +98,8 @@ fun UserInfoCard(
             )
             OutlinedTextField(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .semantics { testTag = "userEmail" },
                 value = userCreateInputUIState.email,
                 label = { Text(stringResource(R.string.user_create_email)) },
                 keyboardOptions = KeyboardOptions(
@@ -114,7 +119,8 @@ fun UserInfoCard(
             OutlinedTextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .focusRequester(focusRequester),
+                    .focusRequester(focusRequester)
+                    .semantics { testTag = "userPhone" },
                 value = userCreateInputUIState.phoneNumber,
                 label = { Text(stringResource(R.string.user_create_phone_number)) },
                 keyboardOptions = KeyboardOptions(
@@ -143,6 +149,8 @@ fun UserInfoCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Checkbox(
+                    modifier = Modifier.semantics { testTag = "checkbox"
+                                                  contentDescription = "Check"},
                     checked = userCreateInputUIState.checkboxChecked,
                     onCheckedChange = onCheckboxCheckedChanged,
                     colors = CheckboxDefaults.colors(

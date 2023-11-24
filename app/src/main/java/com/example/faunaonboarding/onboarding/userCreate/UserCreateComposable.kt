@@ -15,6 +15,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -120,7 +122,8 @@ fun UserCreateComposable(
                     ) {
                         FaunaButton(
                             modifier = Modifier
-                                .fillMaxWidth(0.4F),
+                                .fillMaxWidth(0.4F)
+                                .semantics { testTag = "continueButton" },
                             text = stringResource(id = R.string.on_board_new_user_continue_button),
                             iconRight = R.drawable.right,
                             contentColor = MaterialTheme.colorScheme.onPrimary,
