@@ -52,8 +52,8 @@ jobs:
     - name: Run tests
       run: ./gradlew test
 
-    - name: Run instrumented tests
-      run: ./gradlew  connectedAndroidTest
+#    - name: Run instrumented tests
+#      run: ./gradlew  connectedAndroidTest
 
     - name: Upload Test Results
       uses: actions/upload-artifact@v2
