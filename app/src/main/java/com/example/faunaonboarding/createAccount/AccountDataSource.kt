@@ -10,7 +10,6 @@ import javax.inject.Singleton
 
 @Singleton
 open class AccountDataSource @Inject constructor(
-//    private val apolloClient: ApolloClient,
     private val user: User
 ) {
     private val loginSuccessful = mutableStateOf(true)

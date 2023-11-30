@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # testim steps
 
+    # testim tests
 #    - name: Set up Node.js
 #      uses: actions/setup-node@v1
 #      with:
@@ -43,11 +43,12 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    # - name: Build with Gradle
 
-    #   run: ./gradlew build
+    - name: Build with Gradle
+      run: ./gradlew build
 
     - name: Run tests
       run: ./gradlew test
@@ -60,6 +61,7 @@ jobs:
       with:
         name: test-results
         path: app/build/test-results
+
 #    - name: Store test results
 #      uses: dorny/test-reporter@v1
 #      if: always()
